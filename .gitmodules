@@ -1,0 +1,6 @@
+[submodule "dependencies/cereal"]
+	path = dependencies/cereal
+	url = https://github.com/USCiLab/cereal.git
+[submodule "dependencies/pugixml"]
+	path = dependencies/pugixml
+	url = https://github.com/zeux/pugixml.git
