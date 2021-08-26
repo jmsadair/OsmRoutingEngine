@@ -13,10 +13,8 @@
 * 
 * NOTE: In general, we will use v to denote vertices that have an outgoing edge to the vertex being contracted i.e. v -> u, where
 *       u is the vertex that is being contracted. We will use w to denote vertices that the contracted vertex has an 
-*       outgoing edge to i.e. u -> w. 
-* 
-*		We will also use the term "witness path". Suppose that u is a vertex being contracted. A witness path from vertex v to 
-*		vertex w is a path that does not contain u such that weight(path(v, w)) <= weight(v -> u -> w). 
+*       outgoing edge to i.e. u -> w. We will also use the term "witness path". Suppose that u is a vertex being contracted. 
+*       A witness path from vertex v to vertex w is a path that does not contain u such that weight(path(v, w)) <= weight(v -> u -> w). 
 */
 class constructor {
 
