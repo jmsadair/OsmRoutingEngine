@@ -14,23 +14,23 @@
 */
 struct vertex {
 
-// A standard 64-bit OSM node id.
+	// A standard 64-bit OSM node id.
 	unsigned long long id;
 
-// Adjacent vertices and their edge weights.
+	// Adjacent vertices and their edge weights.
 	std::unordered_map<unsigned long long, double> in_edges, out_edges;
 	
-// Keeps track of how many adjacent vertices have been contracted. Used when computing priority term in hierarchy construction.
+	// Keeps track of how many adjacent vertices have been contracted. Used when computing priority term in hierarchy construction.
 	int deleted_neighbors;
 
-// The importance of a vertex. Used in the bidirectional search.
+	// The importance of a vertex. Used in the bidirectional search.
 	unsigned long long order;
 
 	vertex(unsigned long long id, unsigned long long order = 0, bool contracted = false);
 
 	vertex();
 
-// Serializes necessary information so that the graoh can be saved in a binary file.
+	// Serializes necessary information so that the graoh can be saved in a binary file.
 	template <class Archive>
 	void serialize(Archive& ar) {
 
@@ -46,20 +46,20 @@ struct vertex {
 */
 struct edge {
 
-// The OSM nodes that make up an edge in a graph.
+	// The OSM nodes that make up an edge in a graph.
 	std::vector<unsigned long long> nodes;
 
-// Note that the start and end nodes are not actually stored in the nodes vector.
+	// Note that the start and end nodes are not actually stored in the nodes vector.
 	unsigned long long start, end;
 
-// The weight of the edge (generally, we use a time weight in minutes).
+	// The weight of the edge (generally, we use a time weight in minutes).
 	double weight;
 
 	edge(const unsigned long long start, const unsigned long long end, std::vector<unsigned long long>& nodes, double weight);
 
 	edge();
 
-// Serializes necessary information so that the graoh can be saved in a binary file.
+	// Serializes necessary information so that the graoh can be saved in a binary file.
 	template <class Archive>
 	void serialize(Archive& ar) {
 
@@ -81,7 +81,7 @@ private:
 
 	unsigned long long num_edges_;
 
-// Keeps track of the shortucts that are added to the graoh during contraction. Used when unpacking shortest paths in bidirectional search.
+	// Keeps track of the shortucts that are added to the graoh during contraction. Used when unpacking shortest paths in bidirectional search.
 	std::unordered_map<unsigned long long, std::unordered_map<unsigned long long, unsigned long long>> shortcuts_;
 
 	std::unordered_map<unsigned long long, std::unordered_map<unsigned long long, edge>> edges_;
@@ -92,25 +92,25 @@ public:
 
 	graph();
 
-/**
-* This method is primarily used when parsing the OSM data. Adds an edge to the graph and stores the nodes that
-* make up the edge. If the start or end vertex is not in the graph, it will be added. This method should NOT
-* be useed when adding a shortcut edge.
-*/
+	/**
+	* This method is primarily used when parsing the OSM data. Adds an edge to the graph and stores the nodes that
+	* make up the edge. If the start or end vertex is not in the graph, it will be added. This method should NOT
+	* be useed when adding a shortcut edge.
+	*/
 	void add_edge(const unsigned long long start, const unsigned long long end, std::vector<unsigned long long>& nodes, const double weight, const bool bidirectional = false);
 
-// Checks whether a given edge is present in the graph or not (checks shortcut edges too).
+	// Checks whether a given edge is present in the graph or not (checks shortcut edges too).
 	bool edge_exists(const unsigned long long start, const unsigned long long end);
 
 	void remove_edge(const unsigned long long start, const unsigned long long end);
 
-/**
-* This method is used during the contraction of the graph. Adds the edge and records the shortcut for later use
-* in routing.
-*/
+	/**
+	* This method is used during the contraction of the graph. Adds the edge and records the shortcut for later use
+	* in routing.
+	*/
 	void add_shortcut(const unsigned long long start, const unsigned long long end, const unsigned long long through, const double weight);
 
-// Updates the importance of a vertex during hierarchy construction.
+	// Updates the importance of a vertex during hierarchy construction.
 	void add_ordering(const unsigned long long vertex, const unsigned long long ordering);
 
 	unsigned long long get_num_vertices() const { return vertices_.size(); }
@@ -119,16 +119,16 @@ public:
 
 	std::unordered_map<unsigned long long, vertex> get_vertices() const { return vertices_; }
 
-/**
-* Computes the shortest path using a modified bidirectional search algorithm. If standard is set to true, a standard bidirectional Dijkstra search is
-* conducted instead. The standard bidirectional Dijkstra search is only used for testing, as it much slower than the modified bidirectional search.
-*/
+	/**
+	* Computes the shortest path using a modified bidirectional search algorithm. If standard is set to true, a standard bidirectional Dijkstra search is
+	* conducted instead. The standard bidirectional Dijkstra search is only used for testing, as it much slower than the modified bidirectional search.
+	*/
 	std::pair<std::vector<unsigned long long>, double> get_shortest_path(const unsigned long long source, const unsigned long long target, const bool standard = false);
 
-/**
-* Used to remove unnecessary edges after the graph is contracted. Edges that start at a vertex of greater order than the vertex the edge ends at can
-* be removed from the graph becuase these edges will never appear on the shortest path. 
-*/
+	/**
+	* Used to remove unnecessary edges after the graph is contracted. Edges that start at a vertex of greater order than the vertex the edge ends at can
+	* be removed from the graph becuase these edges will never appear on the shortest path. 
+	*/
 	void optimize_edges();
 	
 

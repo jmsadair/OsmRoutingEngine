@@ -10,9 +10,9 @@ class serialize {
 
 public:
 	
-// Saves the graph as binary file.
+	// Saves the graph as binary file.
 	static void save_graph(const char* filename, graph graph);
 
-// Loads a graph that is saved in a binary file.
+	// Loads a graph that is saved in a binary file.
 	static graph load_graph(const char* filename);
 };
