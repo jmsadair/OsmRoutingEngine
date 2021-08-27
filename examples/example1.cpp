@@ -7,7 +7,7 @@
 
 /**
 * This is a baic demonstration of how one might use CppRoutingEngine. The code below transforms an OSM file
-* (the state of Massachusetts) into a routing hierarchy, tests the average routing time, finds a route bewteen
+* (Washington D.C.) into a routing hierarchy, tests the average routing time, finds a route bewteen
 * two vertices in the graph, and saves the graph.
 */
 int main() {
