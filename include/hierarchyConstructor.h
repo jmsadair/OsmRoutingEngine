@@ -13,8 +13,10 @@
 * 
 * NOTE: In general, we will use v to denote vertices that have an outgoing edge to the vertex being contracted i.e. v -> u, where
 *       u is the vertex that is being contracted. We will use w to denote vertices that the contracted vertex has an 
-*       outgoing edge to i.e. u -> w. We will also use the term "witness path". Suppose that u is a vertex being contracted. 
-*       A witness path from vertex v to vertex w is a path that does not contain u such that weight(path(v, w)) <= weight(v -> u -> w). 
+*       outgoing edge to i.e. u -> w. 
+* 
+*		We will also use the term "witness path". Suppose that u is a vertex being contracted. A witness path from vertex v to 
+*		vertex w is a path that does not contain u such that weight(path(v, w)) <= weight(v -> u -> w). 
 */
 class constructor {
 
@@ -43,7 +45,7 @@ private:
 * is then no hope of finding a witness path. We can also abort the search if we have settled all outgoing vertices of the vertex being
 * contracted. 
 */
-	std::unordered_map<unsigned long long, double> witness_search(unsigned long long source, const unsigned long long contracted_vertex, double max_distance, int hop_limit);
+	std::unordered_map<unsigned long long, double> witness_search(unsigned long long source, const unsigned long long contracted_vertex, const double max_distance, const int hop_limit);
 
 /**
 * This method updates the deleted neighbor counter of all vertices adjacent to the vertex being contracted.
