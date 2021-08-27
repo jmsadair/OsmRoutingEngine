@@ -55,7 +55,7 @@ struct edge {
 // The weight of the edge (generally, we use a time weight in minutes).
 	double weight;
 
-	edge(unsigned long long start, unsigned long long end, std::vector<unsigned long long>& nodes, double weight);
+	edge(const unsigned long long start, const unsigned long long end, std::vector<unsigned long long>& nodes, double weight);
 
 	edge();
 
@@ -82,11 +82,11 @@ private:
 	unsigned long long num_edges_;
 
 // Keeps track of the shortucts that are added to the graoh during contraction. Used when unpacking shortest paths in bidirectional search.
-	std::unordered_map<unsigned long long, std::unordered_map<unsigned long long, unsigned long long>> shortcuts;
+	std::unordered_map<unsigned long long, std::unordered_map<unsigned long long, unsigned long long>> shortcuts_;
 
-	std::unordered_map<unsigned long long, std::unordered_map<unsigned long long, edge>> edges;
+	std::unordered_map<unsigned long long, std::unordered_map<unsigned long long, edge>> edges_;
 
-	std::unordered_map<unsigned long long, vertex> vertices;
+	std::unordered_map<unsigned long long, vertex> vertices_;
 
 public:
 
@@ -102,28 +102,28 @@ public:
 // Checks whether a given edge is present in the graph or not (checks shortcut edges too).
 	bool edge_exists(const unsigned long long start, const unsigned long long end);
 
-	void remove_edge(unsigned long long start, unsigned long long end);
+	void remove_edge(const unsigned long long start, const unsigned long long end);
 
 /**
 * This method is used during the contraction of the graph. Adds the edge and records the shortcut for later use
 * in routing.
 */
-	void add_shortcut(unsigned long long start, unsigned long long end, unsigned long long through, double weight);
+	void add_shortcut(const unsigned long long start, const unsigned long long end, const unsigned long long through, const double weight);
 
 // Updates the importance of a vertex during hierarchy construction.
-	void add_ordering(unsigned long long vertex, unsigned long long ordering);
+	void add_ordering(const unsigned long long vertex, const unsigned long long ordering);
 
-	unsigned long long get_num_vertices() const { return vertices.size(); }
+	unsigned long long get_num_vertices() const { return vertices_.size(); }
 
 	unsigned long long get_num_edges() const { return num_edges_; }
 
-	std::unordered_map<unsigned long long, vertex> get_vertices() const { return vertices; }
+	std::unordered_map<unsigned long long, vertex> get_vertices() const { return vertices_; }
 
 /**
 * Computes the shortest path using a modified bidirectional search algorithm. If standard is set to true, a standard bidirectional Dijkstra search is
 * conducted instead. The standard bidirectional Dijkstra search is only used for testing, as it much slower than the modified bidirectional search.
 */
-	std::pair<std::vector<unsigned long long>, double> get_shortest_path(unsigned long long source, unsigned long long target, const bool standard = false);
+	std::pair<std::vector<unsigned long long>, double> get_shortest_path(const unsigned long long source, const unsigned long long target, const bool standard = false);
 
 /**
 * Used to remove unnecessary edges after the graph is contracted. Edges that start at a vertex of greater order than the vertex the edge ends at can
@@ -136,14 +136,14 @@ public:
 	template <class Archive>
 	void save(Archive& ar) const
 	{
-		ar(vertices, edges, shortcuts);
+		ar(vertices_, edges_, shortcuts_);
 	}
 
 	// Used for loading a graph stored in a binary file.
 	template <class Archive>
 	void load(Archive& ar)
 	{
-		ar(vertices, edges, shortcuts);
+		ar(vertices_, edges_, shortcuts_);
 	}
 };
 

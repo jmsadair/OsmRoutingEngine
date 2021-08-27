@@ -29,7 +29,7 @@ public:
 	static void test_avg_routing_time(graph graph, int number_of_tests);
 };
 
-// This is a basic timer class that is used foer bench marking.
+// This is a basic timer class that is used foer benchmarking.
 class timer {
 
 private:
@@ -49,5 +49,4 @@ public:
 	double elapsed_milliseconds();
 
 	double elapsed_seconds();
-
 };

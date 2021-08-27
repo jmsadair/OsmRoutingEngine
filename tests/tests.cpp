@@ -124,11 +124,11 @@ void test::test_avg_routing_time(graph graph, int number_of_tests) {
 		// Getting a random start point.
 		auto random_it1 = std::next(std::begin(vertices), rand() % vertices.size());
 		auto random_start = (*random_it1).first;
-		
+
 		// Getting a random end point.
 		auto random_it2 = std::next(std::begin(vertices), rand() % vertices.size());
 		auto random_end = (*random_it2).first;
-
+		
 		// Timing the execution time of the bidrectional search.
 		timer.start();
 		graph.get_shortest_path(random_start, random_end);

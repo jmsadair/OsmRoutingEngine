@@ -113,7 +113,7 @@ int constructor::contract_vertex(const unsigned long long contracted_vertex, con
 	return added_shortcuts;
 }
 
-std::unordered_map<unsigned long long, double> constructor::witness_search(unsigned long long source, const unsigned long long contracted_vertex, double max_distance, int hop_limit) {
+std::unordered_map<unsigned long long, double> constructor::witness_search(const unsigned long long source, const unsigned long long contracted_vertex, const double max_distance, const int hop_limit) {
 	queue queue;
 	std::unordered_map<unsigned long long, double> dists;
 	std::unordered_set<unsigned long long> visited, targets;
@@ -201,7 +201,7 @@ void constructor::add_shortcuts(const unsigned long long contracted_vertex, cons
 	}
 }
 
-void constructor::contracted_neighbors(unsigned long long contracted_vertex) {
+void constructor::contracted_neighbors(const unsigned long long contracted_vertex) {
 
 	// We use an unordered set to keep track of vertices that have already been incremented to avoid over counting.
 	std::unordered_set<unsigned long long> seen;

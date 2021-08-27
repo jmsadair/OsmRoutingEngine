@@ -4,7 +4,7 @@ cmake_minimum_required (VERSION 3.8)
 project ("OsmRoutingEngine")
 
 set(SOURCES
-    src/main.cpp
+    examples/example1.cpp
     src/queue.cpp
     src/graph.cpp
     src/osmParser.cpp

@@ -45,13 +45,13 @@ private:
 	void relax_edge(const unsigned long long vertex, const bool backward = false, const bool alt_search = false);
 
 // Using the predecessors of the vertices settled in the bidirectional searches, we reconstruct the shortest path. 
-	std::vector<unsigned long long> reconstruct_path(unsigned long long source, unsigned long long target, unsigned long long intersection);
+	std::vector<unsigned long long> reconstruct_path(const unsigned long long source, const unsigned long long target, const unsigned long long intersection);
 
 // Shortcut edges are added to the graph during the contraction process. We need to add the vertices that these shortcuts go through to the path.
 	std::vector<unsigned long long> unpack_shortcut(unsigned long long start, unsigned long long end);
 
 // Unpacks all of the shortucts in the path.
-	std::vector<unsigned long long> unpack_path(std::vector<unsigned long long>* path);
+	std::vector<unsigned long long> unpack_path(const std::vector<unsigned long long>* path);
 
 // Checks whether a shortuct exists between two vertices. 
 	bool is_shortcut(const unsigned long long start, const unsigned long long end);
@@ -66,8 +66,8 @@ public:
 * but instead of relaxing all edges that are adjacent to a vertex that is popped from the queue, we only relax edges that lead to nodes with higher order than that vertex.
 * In turn, this search is much faster than a bidirectional Dijkstra search. Returns a pair containing the shortest path and the lenght of the shortest path.
 */
-	std::pair<std::vector<unsigned long long>, double> execute_search(unsigned long long source, unsigned long long target);
+	std::pair<std::vector<unsigned long long>, double> execute_search(const unsigned long long source, const unsigned long long target);
 
 // This is just a standard, bidirectional Dijkstra search. Primarily used for testing. Returns a pair containing the shortest path and the lenght of the shortest path.
-	std::pair<std::vector<unsigned long long>, double> execute_standard_search(unsigned long long source, unsigned long long target);
+	std::pair<std::vector<unsigned long long>, double> execute_standard_search(const unsigned long long source, const unsigned long long target);
 };
