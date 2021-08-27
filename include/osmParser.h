@@ -7,7 +7,6 @@
 #include "pugixml.hpp"
 #include "graph.h"
 
-
 // The way struct is used to store all of the basic information found in an OSM way.
 struct way {
 

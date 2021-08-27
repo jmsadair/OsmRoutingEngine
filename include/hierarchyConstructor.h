@@ -45,7 +45,7 @@ private:
 * is then no hope of finding a witness path. We can also abort the search if we have settled all outgoing vertices of the vertex being
 * contracted. 
 */
-	std::unordered_map<unsigned long long, double> witness_search(unsigned long long source, const unsigned long long contracted_vertex, const double max_distance, const int hop_limit);
+	std::unordered_map<unsigned long long, double> witness_search(const unsigned long long source, const unsigned long long contracted_vertex, const double max_distance, const int hop_limit);
 
 /**
 * This method updates the deleted neighbor counter of all vertices adjacent to the vertex being contracted.

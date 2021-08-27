@@ -6,7 +6,6 @@ heap_element::heap_element(const unsigned long long id, const double value)
 	: id(id), value(value), direction(-1)
 {}
 
-
 heap_element::heap_element(const unsigned long long id, const double value, const int direction)
 	: id(id), value(value), direction(direction)
 {}
@@ -67,7 +66,7 @@ void queue::make_heap(const std::vector<heap_element>& elems) {
 	}
 }
 
-void queue::push(unsigned long long id, double value, int direction) {
+void queue::push(const unsigned long long id, double value, int direction) {
 
 	if (direction == 1 || direction == 0) {
 

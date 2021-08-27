@@ -120,7 +120,7 @@ void bidirectional_search::relax_edge(const unsigned long long vertex_id, const 
 		if (!backward) {
 
 			for (const auto& w : vertices_->at(vertex_id).out_edges) {
-
+				
 				// We only relax edges leading to a higher priority vertex.
 				if (visited_source_.find(w.first) != visited_source_.end() || vertices_->at(w.first).order < vertices_->at(vertex_id).order) {
 
@@ -263,7 +263,7 @@ std::vector<unsigned long long> bidirectional_search::unpack_shortcut(unsigned l
 	return unpacked_shortcuts;
 }
 
-std::vector<unsigned long long> bidirectional_search::unpack_path(std::vector<unsigned long long>* shortest_path) {
+std::vector<unsigned long long> bidirectional_search::unpack_path(const std::vector<unsigned long long>* shortest_path) {
 
 	int i = 0;
 	std::vector<unsigned long long> path;
