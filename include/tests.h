@@ -13,9 +13,6 @@ public:
 	* bidirectional Dijkstra search, and compare these distances. If they are different, then the test for that pair of vertices
 	* has failed. Typically, testing is only conducted on smaller graphs (i.e. graphs that represent a city), as testing larger
 	* graphs is extremely slow. We usually run 1000 - 10000 tests depending on the size of the graph.
-	* 
-	* NOTE: At this time, approximately 0.5% - 1.5% of these test cases fail on average. This issue is currently being addressed,
-	*		but a solution has not been found.
 	*/
 	static void test_bidirectional_search(graph graph1, graph graph2, int number_of_tests);
 

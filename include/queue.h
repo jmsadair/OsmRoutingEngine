@@ -35,14 +35,14 @@ private:
 	// We use an unordered map to keep track of the indices of items in the queue. This is useful for increase / decrease key operations.
 	std::unordered_map<unsigned long long, int> indices_;
 
-	void sift_up(unsigned long long idx);
+	void sift_up(int idx);
 
-	void sift_down(unsigned long long idx);
+	void sift_down(int idx);
 
 public:
 	
 	// Takes a size parameter to allocate memory for the heap_ vector.
-	queue(unsigned long long size = 0);
+	queue(int size = 0);
 
 	void make_heap(const std::vector<heap_element>& elems);
 
@@ -73,4 +73,5 @@ public:
 
 	// Deletes an item from the queue.
 	unsigned long long pop();
+
 };

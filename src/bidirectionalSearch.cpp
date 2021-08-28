@@ -12,14 +12,14 @@ std::pair<std::vector<unsigned long long>, double> bidirectional_search::execute
 	// length of the shortest path found so far.
 	double best = INF_;
 
-	dist_source_[source] = 0.0;
-	dist_target_[target] = 0.0;
+	dist_source_[source] = 0;
+	dist_target_[target] = 0;
 
 	prev_source_[source] = -1;
 	prev_target_[target] = -1;
 
-	queue_.push(source, 0.0, 1);
-	queue_.push(target, 0.0, 0);
+	queue_.push(source, 0, 1);
+	queue_.push(target, 0, 0);
 
 	while (!queue_.is_empty()) {
 		
@@ -66,14 +66,14 @@ std::pair<std::vector<unsigned long long>, double> bidirectional_search::execute
 	// length of the shortest path found so far.
 	double best = INF_;
 
-	dist_source_[source] = 0.0;
-	dist_target_[target] = 0.0;
+	dist_source_[source] = 0;
+	dist_target_[target] = 0;
 
 	prev_source_[source] = -1;
 	prev_target_[target] = -1;
 
-	queue_.push(source, 0.0, 1);
-	queue_.push(target, 0.0, 0);
+	queue_.push(source, 0, 1);
+	queue_.push(target, 0, 0);
 
 	while (!queue_.is_empty()) {
 		
@@ -101,7 +101,6 @@ std::pair<std::vector<unsigned long long>, double> bidirectional_search::execute
 			best = dist_source_[u] + dist_target_[u];
 			
 			if (best <= queue_.peek_value()) {
-
 				break;
 			}
 		}
@@ -136,10 +135,9 @@ void bidirectional_search::relax_edge(const unsigned long long vertex_id, const 
 			}
 		}
 		else {
-
 			// Relaxes the incoming edges to the vertex.
 			for (const auto& v : vertices_->at(vertex_id).in_edges) {
-				
+			
 				// We only relax edges leading to a higher priority vertex.
 				if (visited_target_.find(v.first) != visited_target_.end() || vertices_->at(v.first).order < vertices_->at(vertex_id).order) {
 
@@ -158,10 +156,10 @@ void bidirectional_search::relax_edge(const unsigned long long vertex_id, const 
 	else {
 
 		if (!backward) {
-
+			
 			// Relaxes the outgoing egdes to the vertex.
 			for (const auto& w : vertices_->at(vertex_id).out_edges) {
-
+				
 				if (visited_source_.find(w.first) != visited_source_.end()) {
 
 					continue;
@@ -176,10 +174,10 @@ void bidirectional_search::relax_edge(const unsigned long long vertex_id, const 
 			}
 		}
 		else {
-
+			
 			// Relaxes the incoming edges to the vertex.
 			for (const auto& v : vertices_->at(vertex_id).in_edges) {
-
+				
 				if (visited_target_.find(v.first) != visited_target_.end()) {
 
 					continue;
@@ -247,9 +245,10 @@ std::vector<unsigned long long> bidirectional_search::unpack_shortcut(unsigned l
 	while (!stack.empty()) {
 
 		auto next_id = stack.back();
+		
 
 		if (is_shortcut(start, next_id)) {
-
+			
 			stack.push_back(shortcuts_->at(start).at(next_id));
 		}
 		else {
@@ -276,6 +275,7 @@ std::vector<unsigned long long> bidirectional_search::unpack_path(const std::vec
 
 			auto unpacked_shortcuts = unpack_shortcut(shortest_path->at(i), shortest_path->at(i + 1));
 			path.insert(path.end(), unpacked_shortcuts.begin(), unpacked_shortcuts.end());
+
 		}
 		else {
 

@@ -46,7 +46,7 @@ void test::test_bidirectional_search(graph graph1, graph graph2, int number_of_t
 	int number_tests_conducted = 0;
 	int number_tests_failed = 0;
 
-	std::cout << "Conducting tests..." << std::endl;
+	std::cout << "Testing bidirectional search algorithm..." << std::endl;
 
 	while (number_tests_conducted < number_of_tests) {
 
@@ -98,7 +98,7 @@ void test::test_bidirectional_search(graph graph1, graph graph2, int number_of_t
 		number_tests_conducted++;
 	}
 
-	std::cout << "Testing complete." << std::endl;
+	std::cout << "Testing complete. Tested " << number_of_tests << " routes." << std::endl;
 
 	if (passed_testing) {
 
@@ -106,7 +106,7 @@ void test::test_bidirectional_search(graph graph1, graph graph2, int number_of_t
 	}
 	else {
 
-		std::cout << "Failed " << number_tests_failed << " of " << number_of_tests << " tests." << std::endl;
+		std::cout << "Failed " << number_tests_failed << " tests." << std::endl;
 	}
 }
 
@@ -141,7 +141,7 @@ void test::test_avg_routing_time(graph graph, int number_of_tests) {
 
 	avg_time = avg_time / number_of_tests;
 
-	std::cout << "Testing complete." << std::endl;
+	std::cout << "Testing complete. Tested " << number_of_tests << " routes." << std::endl;
 
-	std::cout << "Conducted " << number_of_tests << " tests. Average routing time is " << avg_time << " milliseconds." << std::endl;
+	std::cout << "Average routing time is " << avg_time << " milliseconds." << std::endl;
 }
