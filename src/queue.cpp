@@ -10,32 +10,32 @@ heap_element::heap_element(const unsigned long long id, const double value, cons
 	: id(id), value(value), direction(direction)
 {}
 
-queue::queue(const unsigned long long size) {
+queue::queue(const int size) {
 
 	heap_.reserve(size);
 }
 
-void queue::sift_up(unsigned long long idx) {
+void queue::sift_up(int idx) {
 
-	unsigned long long parent = idx / 2;
+	int parent = (idx - 1) / 2;
 
-	while (heap_[idx].value < heap_[parent].value) {
+	while (idx > 0 && heap_[idx].value < heap_[parent].value) {
 
 		indices_[heap_[idx].id] = parent;
 		indices_[heap_[parent].id] = idx;
 		std::swap(heap_[parent], heap_[idx]);
 		idx = parent;
-		parent = parent / 2;
+		parent = (parent - 1) / 2;
 	}
 }
 
-void queue::sift_down(const unsigned long long idx) {
+void queue::sift_down(const int idx) {
 
-	const unsigned long long left = 2 * idx + 1;
-	const unsigned long long right = 2 * idx + 2;
-	unsigned long long smallest = idx;
+	int left = 2 * idx + 1;
+	int right = 2 * idx + 2;
+	int smallest = idx;
 
-	if (left < heap_.size() && heap_[left].value < heap_[idx].value) {
+	if (left < heap_.size() && heap_[left].value < heap_[smallest].value) {
 
 		smallest = left;
 	}
@@ -66,7 +66,7 @@ void queue::make_heap(const std::vector<heap_element>& elems) {
 	}
 }
 
-void queue::push(const unsigned long long id, double value, int direction) {
+void queue::push(const unsigned long long id, const double value, const int direction) {
 
 	if (direction == 1 || direction == 0) {
 
@@ -87,7 +87,7 @@ unsigned long long queue::pop() {
 
 	indices_.erase(min_element);
 	indices_[heap_.back().id] = 0;
-	heap_[0] = heap_.back();
+	std::swap(heap_[0], heap_.back());
 	heap_.pop_back();
 	sift_down(0);
 
@@ -102,8 +102,8 @@ void queue::decrease_key(const unsigned long long id, const double value) {
 
 void queue::increase_key(const unsigned long long id, const double value) {
 
-		heap_[indices_[id]].value = value;
-		sift_down(indices_[id]);
+	heap_[indices_[id]].value = value;
+	sift_down(indices_[id]);
 }
 
 void queue::lazy_update(const double value) {
