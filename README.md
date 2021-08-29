@@ -1,4 +1,8 @@
 # OsmRoutingEngine
+<p align="center">
+  <img width="500" height="350" src="https://www.gopetfriendly.com/blog/wp-content/uploads/2016/03/RT-Map.png">
+</p>
+
 OsmRoutingEngine utilizes [contraction hierarchies](https://en.wikipedia.org/wiki/Contraction_hierarchies "Contraction Hierarchies") in order to transform an OpenStreetMap (OSM) file into a graph that can be used for extremely fast routing. Originally proposed 
 by Robert Geisberger in 2008, this routing technique is a simple and effective solution to the shortest path problem in large road networks. The contraction hierarchy routing 
 algorithm consists of two phases: the pre-processing phase and the query phase.
