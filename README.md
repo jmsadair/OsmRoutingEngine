@@ -10,7 +10,7 @@ algorithm consists of two phases: the pre-processing phase and the query phase.
 During the pre-processing phase, we first order all nodes in the graph by importance. We then construct a hierarchy by iteratively contracting the nodes in order of least 
 important to most important.  When a node is contracted, it is removed from the graph. If the removed node was on the shortest path of two of its neighbors, we add a shortcut edge 
 that connects those two neighbors such that the shortest path between those neighbors is preserved. Otherwise, if there is another path connecting those neighbors that does not 
-go through the removed vertex, a shortcut edge is not necessary. We call these paths witness path, and the process of searching for these paths a witness search.
+go through the removed vertex, a shortcut edge is not necessary. We call these paths witness paths, and the process of searching for these paths a witness search.
 
 During the query phase, we run a bidirectional search that only considers increasingly important nodes. We run this search on the overlay graph, the graph that contains all the 
 original nodes and edges in addition to the shortcut edges added during the contraction process. This results in much faster routing than traditional shortest path algorithms. 
