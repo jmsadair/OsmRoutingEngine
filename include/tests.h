@@ -45,5 +45,7 @@ public:
 
 	double elapsed_milliseconds();
 
+    double elapsed_nanoseconds();
+
 	double elapsed_seconds();
 };

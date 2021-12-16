@@ -2,8 +2,8 @@
 #include "graph.h"
 
 /**
-* The purpose of this class is to provide a way of saving a graph for future use, as parsing and preproccesing
-* a very large OSM file can be quite time comsuming. We use the Cereal library to serialize the graph. More information 
+* The purpose of this class is to provide a way of saving a graph for future use, as parsing and preprocessing
+* a very large OSM file can be quite time consuming. We use the Cereal library to serialize the graph. More information
 * about Cereal can be found at https://uscilab.github.io/cereal/.
 */
 class serialize {

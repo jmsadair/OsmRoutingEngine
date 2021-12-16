@@ -7,37 +7,35 @@
 static const double epsilon = 0.00001;
 
  void timer::start() {
-
 	start_time_ = std::chrono::system_clock::now();
 	running_ = true;
 }
 
 void timer::stop() {
-
 	end_time_ = std::chrono::system_clock::now();
 	running_ = false;
 }
 
 double timer::elapsed_milliseconds() {
-
 	std::chrono::time_point<std::chrono::system_clock> endTime;
-
-	if (running_) {
-
-		endTime = std::chrono::system_clock::now();
+	if (running_)
+    {
+        endTime = std::chrono::system_clock::now();
+    }
+	else
+    {
+        endTime = end_time_;
 	}
-	else {
-
-		endTime = end_time_;
-	}
-
 	return std::chrono::duration_cast<std::chrono::milliseconds>(endTime - start_time_).count();
 }
 
 double timer::elapsed_seconds() {
-
 	return elapsed_milliseconds() / 1000.0;
 }
+
+double timer::elapsed_nanoseconds() {
+     return elapsed_milliseconds() * 1000000;
+ }
 
 void test::test_bidirectional_search(graph graph1, graph graph2, int number_of_tests) {
 
@@ -129,7 +127,7 @@ void test::test_avg_routing_time(graph graph, int number_of_tests) {
 		auto random_it2 = std::next(std::begin(vertices), rand() % vertices.size());
 		auto random_end = (*random_it2).first;
 		
-		// Timing the execution time of the bidrectional search.
+		// Timing the execution time of the bidirectional search.
 		timer.start();
 		graph.get_shortest_path(random_start, random_end);
 		timer.stop();

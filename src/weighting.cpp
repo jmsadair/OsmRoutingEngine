@@ -19,8 +19,8 @@ double weighting::haversine_dist(const double lat1, const double lon1, const dou
 	const double rad_lon1 = degs_to_rads(lon1);
 	const double rad_lat2 = degs_to_rads(lat2);
 	const double rad_lon2 = degs_to_rads(lon2);
-	const double d_lat = abs(rad_lat1 - rad_lat2);
-	const double d_lon = abs(rad_lon1 - rad_lon2);
+	const double d_lat = std::abs(rad_lat1 - rad_lat2);
+	const double d_lon = std::abs(rad_lon1 - rad_lon2);
 
 	const double a = pow(sin(d_lat / 2), 2) + cos(rad_lat1) * cos(rad_lat2) * pow(sin(d_lon / 2), 2);
 	const double d_sigma = 2 * asin(sqrt(a));

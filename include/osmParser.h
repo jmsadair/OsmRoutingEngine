@@ -7,15 +7,14 @@
 #include "pugixml.hpp"
 #include "graph.h"
 
-// The way struct is used to store all of the basic information found in an OSM way.
+// The way struct is used to store all the basic information found in an OSM way.
 struct way {
-
 	/**
-	* Contains all of the node references present in a way. Node references are ID numebers
-	* that correspons to a unique coordinate pair. Noe that node references are 64 but unsigned
+	* Contains all of the node references present in a way. Node references are ID numbers
+	* that corresponds to a unique coordinate pair. Noe that node references are 64 but unsigned
 	* integers >= 1, and so an unsigned long long is necessary.
 	*/
-	std::vector<unsigned long long> node_refs;
+	std::vector<uint64_t> node_refs;
 
 	/**
 	* Contains all of the tags present in a way. Tags consist of a key-value pair. Tags describe
@@ -23,7 +22,7 @@ struct way {
 	*/
 	std::unordered_map<std::string, std::string> tags;
 
-	way(const std::vector<unsigned long long>& way_node_refs, const std::unordered_map<std::string, std::string>& way_tags);
+	way(std::vector<uint64_t>  way_node_refs, std::unordered_map<std::string, std::string>  way_tags);
 };
 
 /**
@@ -45,15 +44,15 @@ private:
 
 public:
 
-	parser(const char* osm_filename);
+	explicit parser(const char* osm_filename);
 
 	/**
-	* This function will retreive the IDs and coordinates of all the nodes in the OSM file.
+	* This function will retrieve the IDs and coordinates of all the nodes in the OSM file.
 	*/
-	std::unordered_map<unsigned long long, std::array<double, 2>> get_locations()const;
+	std::unordered_map<uint64_t, std::array<double, 2>> get_locations()const;
 
 	/**
-	* This function will retreive the the node references and tags from all the ways in the
+	* This function will retrieve the the node references and tags from all the ways in the
 	* OSM file.
 	*/
 	std::vector<way> get_ways()const;
@@ -65,5 +64,5 @@ public:
 	* edge is assigned a time weight (in minutes). The graph, as well as an unordered map of the
 	* locations is returned. 
 	*/
-	std::pair<graph, std::unordered_map<unsigned long long, std::array<double, 2>>> get_routing_data()const;
+	std::pair<graph, std::unordered_map<uint64_t, std::array<double, 2>>> get_routing_data()const;
 };

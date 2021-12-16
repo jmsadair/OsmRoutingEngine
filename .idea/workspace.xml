@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="OsmRoutingEngine" targetName="OsmRoutingEngine" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Release" ENABLED="true" CONFIG_NAME="Release" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0c367441-a0bb-43b9-b8fc-e489b543d2c7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/examples/example1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/examples/example1.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/bidirectionalSearch.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/bidirectionalSearch.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/graph.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/graph.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/hierarchyConstructor.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/hierarchyConstructor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/osmParser.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/osmParser.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/queue.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/queue.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/serialize.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/serialize.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/tests.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/tests.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bidirectionalSearch.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/bidirectionalSearch.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hierarchyConstructor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/hierarchyConstructor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/osmParser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/osmParser.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/queue.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/queue.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/serialize.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/serialize.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/weighting.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/weighting.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests.cpp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CMakeLists.txt" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2021" />
+    <option name="minorVersion" value="3" />
+  </component>
+  <component name="ProjectId" id="22ItinQSCJ5vk8WBdFSc1yDNyqE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="cmake.loaded.for.project" value="true" />
+    <property name="settings.editor.selected.configurable" value="CMakeSettings" />
+  </component>
+  <component name="RunManager">
+    <configuration name="OsmRoutingEngine" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="OsmRoutingEngine" TARGET_NAME="OsmRoutingEngine" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="OsmRoutingEngine" RUN_TARGET_NAME="OsmRoutingEngine">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0c367441-a0bb-43b9-b8fc-e489b543d2c7" name="Changes" comment="" />
+      <created>1639537060588</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1639537060588</updated>
+      <workItem from="1639537063603" duration="2387000" />
+      <workItem from="1639583923742" duration="21051000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
