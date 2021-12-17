@@ -22,10 +22,14 @@ void constructor::contract_graph() {
 
 		graph_.add_ordering(contracted_vertex, ordering_count);
 		ordering_count++;
+<<<<<<< Updated upstream:src/hierarchyConstructor.cpp
 
 		if (ordering_count % 1000 == 0)
 			std::cout << "Contracted " << ordering_count << " vertices." << std::endl;
 
+=======
+		if (ordering_count % 1000 == 0) { std::cout << "Contracted " << ordering_count << " vertices." << std::endl; }
+>>>>>>> Stashed changes:src/RoutingEngine/hierarchyConstructor.cpp
 		contract_vertex(contracted_vertex, 1000);
 
 		// We update the deleted neighbors counter of all vertices adajcent to the vertex being contracted.

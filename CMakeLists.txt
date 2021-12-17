@@ -1,26 +1,13 @@
-﻿
-cmake_minimum_required (VERSION 3.8)
+﻿cmake_minimum_required (VERSION 3.8)
 
-project ("OsmRoutingEngine")
-
-set(SOURCES
-    examples/example1.cpp
-    src/queue.cpp
-    src/graph.cpp
-    src/osmParser.cpp
-    src/weighting.cpp
-    src/serialize.cpp
-    src/hierarchyConstructor.cpp
-    src/bidirectionalSearch.cpp
-    tests/tests.cpp
-    dependencies/pugixml/src/pugixml.cpp
-)
-
-add_executable (OsmRoutingEngine ${SOURCES})
+project (OsmRoutingEngine)
+add_subdirectory(src/RoutingEngine)
+add_executable(OsmRoutingEngine src/main.cpp)
 
 target_include_directories(OsmRoutingEngine
-    PRIVATE 
+        PRIVATE
         ${PROJECT_SOURCE_DIR}/include
+        ${PROJECT_SOURCE_DIR}/dependencies/Catch2/single_include/catch2
         ${PROJECT_SOURCE_DIR}/dependencies/pugixml/src
         ${PROJECT_SOURCE_DIR}/dependencies/cereal/include
-)
+        )

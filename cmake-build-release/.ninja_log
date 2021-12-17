@@ -1,0 +1,25 @@
+# ninja log v5
+23	563	6614215687424384	CMakeFiles/OsmRoutingEngine.dir/src/weighting.cpp.obj	bfc37ca7e4caa3a4
+1	299	6614598616514804	build.ninja	f3e4af84ffedba4a
+18	3119	6614215713034201	CMakeFiles/OsmRoutingEngine.dir/src/serialize.cpp.obj	6fb88dfdaa753ef8
+4	929	6614215691181434	CMakeFiles/OsmRoutingEngine.dir/src/queue.cpp.obj	5cb6bb82372f020d
+30	2010	6614215702004959	CMakeFiles/OsmRoutingEngine.dir/src/bidirectionalSearch.cpp.obj	ec5139ff707e4b20
+26	1969	6614215701530081	CMakeFiles/OsmRoutingEngine.dir/src/graph.cpp.obj	b42a501b7b9ffa85
+21	2896	6614215710768205	CMakeFiles/OsmRoutingEngine.dir/src/osmParser.cpp.obj	be9fbccebaf12cb2
+47	2434	6613809313681814	CMakeFiles/OsmRoutingEngine.dir/tests/tests.cpp.obj	24a97dcfcd6995e1
+3	1352	6614213093823995	CMakeFiles/OsmRoutingEngine.dir/examples/example1.cpp.obj	a66241557feb7d4f
+37	5486	6614215736655824	CMakeFiles/OsmRoutingEngine.dir/dependencies/pugixml/src/pugixml.cpp.obj	e12e61d6e96cd1f0
+40	2292	6614215704667300	CMakeFiles/OsmRoutingEngine.dir/src/hierarchyConstructor.cpp.obj	fb4be3787e57c9ed
+129	380	6614598028909540	OsmRoutingEngine.exe	b638683625015244
+39	2571	6613908452606710	CMakeFiles/OsmRoutingEngine.dir/tests/benchmark.cpp.obj	2db7f59895ff3a7f
+4	765	6613908763216636	CMakeFiles/OsmRoutingEngine.dir/tests/test.cpp.obj	651175ee08f37b32
+1	128	6614598026520857	CMakeFiles/OsmRoutingEngine.dir/src/main.cpp.obj	2177ce10bd9447ee
+13	698	6614598032080037	src/RoutingEngine/CMakeFiles/RoutingEngine.dir/weighting.cpp.obj	c9274638af532d7d
+5	1208	6614598037283435	src/RoutingEngine/CMakeFiles/RoutingEngine.dir/queue.cpp.obj	393f64db94bdfa89
+3	2298	6614598048137132	src/RoutingEngine/CMakeFiles/RoutingEngine.dir/graph.cpp.obj	d224f21328831d00
+20	2319	6614598048293340	src/RoutingEngine/CMakeFiles/RoutingEngine.dir/bidirectionalSearch.cpp.obj	90ad555d2bd903ea
+8	2490	6614598050052294	src/RoutingEngine/CMakeFiles/RoutingEngine.dir/hierarchyConstructor.cpp.obj	535c494e61887245
+10	3122	6614598056377440	src/RoutingEngine/CMakeFiles/RoutingEngine.dir/osmParser.cpp.obj	1b8ed1d5ce5b647
+17	3382	6614598058949627	src/RoutingEngine/CMakeFiles/RoutingEngine.dir/serialize.cpp.obj	628b01d7007ea8d4
+3382	3503	6614598060199910	src/RoutingEngine/libRoutingEngine.a	750aefc6bb7de15c
+4	121	6614598691497793	CMakeFiles/OsmRoutingEngine.dir/src/main.cpp.obj	3ec0d4a793551fd1

@@ -18,7 +18,7 @@ public:
 
 	/**
 	* This method determines an average execution time for the contraction hierarchy bidirectional search. Random vertices are
-	* selected and the time it takes to find a shortest path bewteen those vertices is recorded. This test is much faster than the above test,
+	* selected and the time it takes to find a shortest path between those vertices is recorded. This test is much faster than the above test,
 	* and so we can run this test on much larger graphs (i.e. graphs that represent a region of the country). Typically, we conduct 
 	* 1000-1000000 tests to get an average execution time. This execution time includes finding a shortest path as well as the 
 	* time it takes to unpack that path.
