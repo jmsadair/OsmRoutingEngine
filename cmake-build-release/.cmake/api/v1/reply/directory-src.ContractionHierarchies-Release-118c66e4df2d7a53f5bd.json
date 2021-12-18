@@ -1,0 +1,66 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"src/ContractionHierarchies/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 14,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 15,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "../../C:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/lib",
+			"paths" : 
+			[
+				"src/ContractionHierarchies/libContractionHierarchies.a"
+			],
+			"targetId" : "ContractionHierarchies::@7f8880526c22ffa7c32f",
+			"targetIndex" : 0,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "../..",
+			"paths" : 
+			[
+				"src/ContractionHierarchies/include/queue.h",
+				"src/ContractionHierarchies/include/graph.h",
+				"src/ContractionHierarchies/include/bidirectionalSearch.h",
+				"src/ContractionHierarchies/include/hierarchyConstructor.h",
+				"src/ContractionHierarchies/include/osmParser.h",
+				"src/ContractionHierarchies/include/weighting.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "src/ContractionHierarchies",
+		"source" : "src/ContractionHierarchies"
+	}
+}

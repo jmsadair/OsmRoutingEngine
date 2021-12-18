@@ -39,47 +39,37 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:/Users/jmsad/Desktop/CPP$ Programs/CLion$ Projects/OsmRoutingEngine/cmake-build-release/
-# =============================================================================
-# Object build statements for EXECUTABLE target OsmRoutingEngine
+cmake_ninja_workdir = C$:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/cmake-build-release/
+
+#############################################
+# Utility command for install/local
+
+build CMakeFiles/install/local.util: CUSTOM_COMMAND all
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build install/local: phony CMakeFiles/install/local.util
 
 
 #############################################
-# Order-only phony target for OsmRoutingEngine
+# Utility command for install
 
-build cmake_object_order_depends_target_OsmRoutingEngine: phony || CMakeFiles/OsmRoutingEngine.dir
+build CMakeFiles/install.util: CUSTOM_COMMAND all
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
 
-build CMakeFiles/OsmRoutingEngine.dir/src/main.cpp.obj: CXX_COMPILER__OsmRoutingEngine_Release C$:/Users/jmsad/Desktop/CPP$ Programs/CLion$ Projects/OsmRoutingEngine/src/main.cpp || cmake_object_order_depends_target_OsmRoutingEngine
-  DEP_FILE = CMakeFiles\OsmRoutingEngine.dir\src\main.cpp.obj.d
-  FLAGS = -O3 -DNDEBUG
-  INCLUDES = -I"C:/Users/jmsad/Desktop/CPP Programs/CLion Projects/OsmRoutingEngine/include" -I"C:/Users/jmsad/Desktop/CPP Programs/CLion Projects/OsmRoutingEngine/dependencies/Catch2/single_include/catch2" -I"C:/Users/jmsad/Desktop/CPP Programs/CLion Projects/OsmRoutingEngine/dependencies/pugixml/src" -I"C:/Users/jmsad/Desktop/CPP Programs/CLion Projects/OsmRoutingEngine/dependencies/cereal/include"
-  OBJECT_DIR = CMakeFiles\OsmRoutingEngine.dir
-  OBJECT_FILE_DIR = CMakeFiles\OsmRoutingEngine.dir\src
-
-
-# =============================================================================
-# Link build statements for EXECUTABLE target OsmRoutingEngine
-
-
-#############################################
-# Link the executable OsmRoutingEngine.exe
-
-build OsmRoutingEngine.exe: CXX_EXECUTABLE_LINKER__OsmRoutingEngine_Release CMakeFiles/OsmRoutingEngine.dir/src/main.cpp.obj
-  FLAGS = -O3 -DNDEBUG
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\OsmRoutingEngine.dir
-  POST_BUILD = cd .
-  PRE_LINK = cd .
-  TARGET_FILE = OsmRoutingEngine.exe
-  TARGET_IMPLIB = libOsmRoutingEngine.dll.a
-  TARGET_PDB = OsmRoutingEngine.exe.dbg
+build install: phony CMakeFiles/install.util
 
 
 #############################################
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "C:\Users\jmsad\Desktop\CPP Programs\CLion Projects\OsmRoutingEngine\cmake-build-release" && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -90,116 +80,465 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "C:\Users\jmsad\Desktop\CPP Programs\CLion Projects\OsmRoutingEngine\cmake-build-release" && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S"C:\Users\jmsad\Desktop\CPP Programs\CLion Projects\OsmRoutingEngine" -B"C:\Users\jmsad\Desktop\CPP Programs\CLion Projects\OsmRoutingEngine\cmake-build-release""
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine -BC:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
 
 build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
+
+#############################################
+# Utility command for list_install_components
+
+build list_install_components: phony
+
+
+#############################################
+# Utility command for install/strip
+
+build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build install/strip: phony CMakeFiles/install/strip.util
+
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/Users/jmsad/Desktop/CPP Programs/CLion Projects/OsmRoutingEngine/CMakeLists.txt
+# C:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/CMakeLists.txt
 # =============================================================================
 
 # =============================================================================
-# Object build statements for STATIC_LIBRARY target RoutingEngine
+# Object build statements for EXECUTABLE target RoutingEngine
 
 
 #############################################
 # Order-only phony target for RoutingEngine
 
-build cmake_object_order_depends_target_RoutingEngine: phony || src/RoutingEngine/CMakeFiles/RoutingEngine.dir
+build cmake_object_order_depends_target_RoutingEngine: phony || cmake_object_order_depends_target_ContractionHierarchies cmake_object_order_depends_target_Serialization
 
-build src/RoutingEngine/CMakeFiles/RoutingEngine.dir/queue.cpp.obj: CXX_COMPILER__RoutingEngine_Release C$:/Users/jmsad/Desktop/CPP$ Programs/CLion$ Projects/OsmRoutingEngine/src/RoutingEngine/queue.cpp || cmake_object_order_depends_target_RoutingEngine
-  DEP_FILE = src\RoutingEngine\CMakeFiles\RoutingEngine.dir\queue.cpp.obj.d
-  FLAGS = -O3 -DNDEBUG
-  OBJECT_DIR = src\RoutingEngine\CMakeFiles\RoutingEngine.dir
-  OBJECT_FILE_DIR = src\RoutingEngine\CMakeFiles\RoutingEngine.dir
-
-build src/RoutingEngine/CMakeFiles/RoutingEngine.dir/graph.cpp.obj: CXX_COMPILER__RoutingEngine_Release C$:/Users/jmsad/Desktop/CPP$ Programs/CLion$ Projects/OsmRoutingEngine/src/RoutingEngine/graph.cpp || cmake_object_order_depends_target_RoutingEngine
-  DEP_FILE = src\RoutingEngine\CMakeFiles\RoutingEngine.dir\graph.cpp.obj.d
-  FLAGS = -O3 -DNDEBUG
-  OBJECT_DIR = src\RoutingEngine\CMakeFiles\RoutingEngine.dir
-  OBJECT_FILE_DIR = src\RoutingEngine\CMakeFiles\RoutingEngine.dir
-
-build src/RoutingEngine/CMakeFiles/RoutingEngine.dir/osmParser.cpp.obj: CXX_COMPILER__RoutingEngine_Release C$:/Users/jmsad/Desktop/CPP$ Programs/CLion$ Projects/OsmRoutingEngine/src/RoutingEngine/osmParser.cpp || cmake_object_order_depends_target_RoutingEngine
-  DEP_FILE = src\RoutingEngine\CMakeFiles\RoutingEngine.dir\osmParser.cpp.obj.d
-  FLAGS = -O3 -DNDEBUG
-  OBJECT_DIR = src\RoutingEngine\CMakeFiles\RoutingEngine.dir
-  OBJECT_FILE_DIR = src\RoutingEngine\CMakeFiles\RoutingEngine.dir
-
-build src/RoutingEngine/CMakeFiles/RoutingEngine.dir/weighting.cpp.obj: CXX_COMPILER__RoutingEngine_Release C$:/Users/jmsad/Desktop/CPP$ Programs/CLion$ Projects/OsmRoutingEngine/src/RoutingEngine/weighting.cpp || cmake_object_order_depends_target_RoutingEngine
-  DEP_FILE = src\RoutingEngine\CMakeFiles\RoutingEngine.dir\weighting.cpp.obj.d
-  FLAGS = -O3 -DNDEBUG
-  OBJECT_DIR = src\RoutingEngine\CMakeFiles\RoutingEngine.dir
-  OBJECT_FILE_DIR = src\RoutingEngine\CMakeFiles\RoutingEngine.dir
-
-build src/RoutingEngine/CMakeFiles/RoutingEngine.dir/serialize.cpp.obj: CXX_COMPILER__RoutingEngine_Release C$:/Users/jmsad/Desktop/CPP$ Programs/CLion$ Projects/OsmRoutingEngine/src/RoutingEngine/serialize.cpp || cmake_object_order_depends_target_RoutingEngine
-  DEP_FILE = src\RoutingEngine\CMakeFiles\RoutingEngine.dir\serialize.cpp.obj.d
-  FLAGS = -O3 -DNDEBUG
-  OBJECT_DIR = src\RoutingEngine\CMakeFiles\RoutingEngine.dir
-  OBJECT_FILE_DIR = src\RoutingEngine\CMakeFiles\RoutingEngine.dir
-
-build src/RoutingEngine/CMakeFiles/RoutingEngine.dir/hierarchyConstructor.cpp.obj: CXX_COMPILER__RoutingEngine_Release C$:/Users/jmsad/Desktop/CPP$ Programs/CLion$ Projects/OsmRoutingEngine/src/RoutingEngine/hierarchyConstructor.cpp || cmake_object_order_depends_target_RoutingEngine
-  DEP_FILE = src\RoutingEngine\CMakeFiles\RoutingEngine.dir\hierarchyConstructor.cpp.obj.d
-  FLAGS = -O3 -DNDEBUG
-  OBJECT_DIR = src\RoutingEngine\CMakeFiles\RoutingEngine.dir
-  OBJECT_FILE_DIR = src\RoutingEngine\CMakeFiles\RoutingEngine.dir
-
-build src/RoutingEngine/CMakeFiles/RoutingEngine.dir/bidirectionalSearch.cpp.obj: CXX_COMPILER__RoutingEngine_Release C$:/Users/jmsad/Desktop/CPP$ Programs/CLion$ Projects/OsmRoutingEngine/src/RoutingEngine/bidirectionalSearch.cpp || cmake_object_order_depends_target_RoutingEngine
-  DEP_FILE = src\RoutingEngine\CMakeFiles\RoutingEngine.dir\bidirectionalSearch.cpp.obj.d
-  FLAGS = -O3 -DNDEBUG
-  OBJECT_DIR = src\RoutingEngine\CMakeFiles\RoutingEngine.dir
-  OBJECT_FILE_DIR = src\RoutingEngine\CMakeFiles\RoutingEngine.dir
+build src/CMakeFiles/RoutingEngine.dir/main.cpp.obj: CXX_COMPILER__RoutingEngine_Release C$:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/main.cpp || cmake_object_order_depends_target_RoutingEngine
+  DEP_FILE = src\CMakeFiles\RoutingEngine.dir\main.cpp.obj.d
+  FLAGS = -std=c++11 -O3 -O3 -DNDEBUG -std=gnu++11
+  INCLUDES = -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/ContractionHierarchies/include -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/Serialization -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/Catch2/single_include/catch2 -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/pugixml/src -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/cereal/include
+  OBJECT_DIR = src\CMakeFiles\RoutingEngine.dir
+  OBJECT_FILE_DIR = src\CMakeFiles\RoutingEngine.dir
 
 
 # =============================================================================
-# Link build statements for STATIC_LIBRARY target RoutingEngine
+# Link build statements for EXECUTABLE target RoutingEngine
 
 
 #############################################
-# Link the static library src\RoutingEngine\libRoutingEngine.a
+# Link the executable src\RoutingEngine.exe
 
-build src/RoutingEngine/libRoutingEngine.a: CXX_STATIC_LIBRARY_LINKER__RoutingEngine_Release src/RoutingEngine/CMakeFiles/RoutingEngine.dir/queue.cpp.obj src/RoutingEngine/CMakeFiles/RoutingEngine.dir/graph.cpp.obj src/RoutingEngine/CMakeFiles/RoutingEngine.dir/osmParser.cpp.obj src/RoutingEngine/CMakeFiles/RoutingEngine.dir/weighting.cpp.obj src/RoutingEngine/CMakeFiles/RoutingEngine.dir/serialize.cpp.obj src/RoutingEngine/CMakeFiles/RoutingEngine.dir/hierarchyConstructor.cpp.obj src/RoutingEngine/CMakeFiles/RoutingEngine.dir/bidirectionalSearch.cpp.obj
-  LANGUAGE_COMPILE_FLAGS = -O3 -DNDEBUG
-  OBJECT_DIR = src\RoutingEngine\CMakeFiles\RoutingEngine.dir
+build src/RoutingEngine.exe: CXX_EXECUTABLE_LINKER__RoutingEngine_Release src/CMakeFiles/RoutingEngine.dir/main.cpp.obj | src/ContractionHierarchies/libContractionHierarchies.a src/Serialization/libSerialization.a || src/ContractionHierarchies/libContractionHierarchies.a src/Serialization/libSerialization.a
+  FLAGS = -std=c++11 -O3 -O3 -DNDEBUG
+  LINK_LIBRARIES = src/ContractionHierarchies/libContractionHierarchies.a  src/Serialization/libSerialization.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = src\CMakeFiles\RoutingEngine.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = src\RoutingEngine\libRoutingEngine.a
-  TARGET_PDB = RoutingEngine.a.dbg
+  TARGET_FILE = src\RoutingEngine.exe
+  TARGET_IMPLIB = src\libRoutingEngine.dll.a
+  TARGET_PDB = RoutingEngine.exe.dbg
+
+
+#############################################
+# Utility command for install/local
+
+build src/CMakeFiles/install/local.util: CUSTOM_COMMAND src/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release\src && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build src/install/local: phony src/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install
+
+build src/CMakeFiles/install.util: CUSTOM_COMMAND src/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release\src && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build src/install: phony src/CMakeFiles/install.util
 
 
 #############################################
 # Utility command for edit_cache
 
-build src/RoutingEngine/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "C:\Users\jmsad\Desktop\CPP Programs\CLion Projects\OsmRoutingEngine\cmake-build-release\src\RoutingEngine" && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+build src/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release\src && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
-build src/RoutingEngine/edit_cache: phony src/RoutingEngine/CMakeFiles/edit_cache.util
+build src/edit_cache: phony src/CMakeFiles/edit_cache.util
 
 
 #############################################
 # Utility command for rebuild_cache
 
-build src/RoutingEngine/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "C:\Users\jmsad\Desktop\CPP Programs\CLion Projects\OsmRoutingEngine\cmake-build-release\src\RoutingEngine" && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S"C:\Users\jmsad\Desktop\CPP Programs\CLion Projects\OsmRoutingEngine" -B"C:\Users\jmsad\Desktop\CPP Programs\CLion Projects\OsmRoutingEngine\cmake-build-release""
+build src/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release\src && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine -BC:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
 
-build src/RoutingEngine/rebuild_cache: phony src/RoutingEngine/CMakeFiles/rebuild_cache.util
+build src/rebuild_cache: phony src/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build src/list_install_components: phony
+
+
+#############################################
+# Utility command for install/strip
+
+build src/CMakeFiles/install/strip.util: CUSTOM_COMMAND src/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release\src && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build src/install/strip: phony src/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# C:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target Serialization
+
+
+#############################################
+# Order-only phony target for Serialization
+
+build cmake_object_order_depends_target_Serialization: phony || src/Serialization/CMakeFiles/Serialization.dir
+
+build src/Serialization/CMakeFiles/Serialization.dir/serialize.cpp.obj: CXX_COMPILER__Serialization_Release C$:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/Serialization/serialize.cpp || cmake_object_order_depends_target_Serialization
+  DEP_FILE = src\Serialization\CMakeFiles\Serialization.dir\serialize.cpp.obj.d
+  FLAGS = -std=c++11 -O3 -O3 -DNDEBUG -std=gnu++11
+  INCLUDES = -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/ContractionHierarchies/include -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/Serialization -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/Catch2/single_include/catch2 -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/pugixml/src -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/cereal/include
+  OBJECT_DIR = src\Serialization\CMakeFiles\Serialization.dir
+  OBJECT_FILE_DIR = src\Serialization\CMakeFiles\Serialization.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target Serialization
+
+
+#############################################
+# Link the static library src\Serialization\libSerialization.a
+
+build src/Serialization/libSerialization.a: CXX_STATIC_LIBRARY_LINKER__Serialization_Release src/Serialization/CMakeFiles/Serialization.dir/serialize.cpp.obj
+  LANGUAGE_COMPILE_FLAGS = -std=c++11 -O3 -O3 -DNDEBUG
+  OBJECT_DIR = src\Serialization\CMakeFiles\Serialization.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = src\Serialization\libSerialization.a
+  TARGET_PDB = Serialization.a.dbg
+
+
+#############################################
+# Utility command for install/local
+
+build src/Serialization/CMakeFiles/install/local.util: CUSTOM_COMMAND src/Serialization/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release\src\Serialization && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build src/Serialization/install/local: phony src/Serialization/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install
+
+build src/Serialization/CMakeFiles/install.util: CUSTOM_COMMAND src/Serialization/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release\src\Serialization && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build src/Serialization/install: phony src/Serialization/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build src/Serialization/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release\src\Serialization && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build src/Serialization/edit_cache: phony src/Serialization/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build src/Serialization/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release\src\Serialization && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine -BC:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build src/Serialization/rebuild_cache: phony src/Serialization/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build src/Serialization/list_install_components: phony
+
+
+#############################################
+# Utility command for install/strip
+
+build src/Serialization/CMakeFiles/install/strip.util: CUSTOM_COMMAND src/Serialization/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release\src\Serialization && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build src/Serialization/install/strip: phony src/Serialization/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# C:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target ContractionHierarchies
+
+
+#############################################
+# Order-only phony target for ContractionHierarchies
+
+build cmake_object_order_depends_target_ContractionHierarchies: phony || src/ContractionHierarchies/CMakeFiles/ContractionHierarchies.dir
+
+build src/ContractionHierarchies/CMakeFiles/ContractionHierarchies.dir/queue.cpp.obj: CXX_COMPILER__ContractionHierarchies_Release C$:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/ContractionHierarchies/queue.cpp || cmake_object_order_depends_target_ContractionHierarchies
+  DEP_FILE = src\ContractionHierarchies\CMakeFiles\ContractionHierarchies.dir\queue.cpp.obj.d
+  FLAGS = -std=c++11 -O3 -O3 -DNDEBUG -std=gnu++11
+  INCLUDES = -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/ContractionHierarchies/include -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/Serialization -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/Catch2/single_include/catch2 -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/pugixml/src -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/cereal/include
+  OBJECT_DIR = src\ContractionHierarchies\CMakeFiles\ContractionHierarchies.dir
+  OBJECT_FILE_DIR = src\ContractionHierarchies\CMakeFiles\ContractionHierarchies.dir
+
+build src/ContractionHierarchies/CMakeFiles/ContractionHierarchies.dir/graph.cpp.obj: CXX_COMPILER__ContractionHierarchies_Release C$:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/ContractionHierarchies/graph.cpp || cmake_object_order_depends_target_ContractionHierarchies
+  DEP_FILE = src\ContractionHierarchies\CMakeFiles\ContractionHierarchies.dir\graph.cpp.obj.d
+  FLAGS = -std=c++11 -O3 -O3 -DNDEBUG -std=gnu++11
+  INCLUDES = -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/ContractionHierarchies/include -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/Serialization -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/Catch2/single_include/catch2 -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/pugixml/src -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/cereal/include
+  OBJECT_DIR = src\ContractionHierarchies\CMakeFiles\ContractionHierarchies.dir
+  OBJECT_FILE_DIR = src\ContractionHierarchies\CMakeFiles\ContractionHierarchies.dir
+
+build src/ContractionHierarchies/CMakeFiles/ContractionHierarchies.dir/bidirectionalSearch.cpp.obj: CXX_COMPILER__ContractionHierarchies_Release C$:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/ContractionHierarchies/bidirectionalSearch.cpp || cmake_object_order_depends_target_ContractionHierarchies
+  DEP_FILE = src\ContractionHierarchies\CMakeFiles\ContractionHierarchies.dir\bidirectionalSearch.cpp.obj.d
+  FLAGS = -std=c++11 -O3 -O3 -DNDEBUG -std=gnu++11
+  INCLUDES = -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/ContractionHierarchies/include -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/Serialization -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/Catch2/single_include/catch2 -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/pugixml/src -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/cereal/include
+  OBJECT_DIR = src\ContractionHierarchies\CMakeFiles\ContractionHierarchies.dir
+  OBJECT_FILE_DIR = src\ContractionHierarchies\CMakeFiles\ContractionHierarchies.dir
+
+build src/ContractionHierarchies/CMakeFiles/ContractionHierarchies.dir/hierarchyConstructor.cpp.obj: CXX_COMPILER__ContractionHierarchies_Release C$:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/ContractionHierarchies/hierarchyConstructor.cpp || cmake_object_order_depends_target_ContractionHierarchies
+  DEP_FILE = src\ContractionHierarchies\CMakeFiles\ContractionHierarchies.dir\hierarchyConstructor.cpp.obj.d
+  FLAGS = -std=c++11 -O3 -O3 -DNDEBUG -std=gnu++11
+  INCLUDES = -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/ContractionHierarchies/include -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/Serialization -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/Catch2/single_include/catch2 -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/pugixml/src -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/cereal/include
+  OBJECT_DIR = src\ContractionHierarchies\CMakeFiles\ContractionHierarchies.dir
+  OBJECT_FILE_DIR = src\ContractionHierarchies\CMakeFiles\ContractionHierarchies.dir
+
+build src/ContractionHierarchies/CMakeFiles/ContractionHierarchies.dir/osmParser.cpp.obj: CXX_COMPILER__ContractionHierarchies_Release C$:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/ContractionHierarchies/osmParser.cpp || cmake_object_order_depends_target_ContractionHierarchies
+  DEP_FILE = src\ContractionHierarchies\CMakeFiles\ContractionHierarchies.dir\osmParser.cpp.obj.d
+  FLAGS = -std=c++11 -O3 -O3 -DNDEBUG -std=gnu++11
+  INCLUDES = -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/ContractionHierarchies/include -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/Serialization -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/Catch2/single_include/catch2 -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/pugixml/src -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/cereal/include
+  OBJECT_DIR = src\ContractionHierarchies\CMakeFiles\ContractionHierarchies.dir
+  OBJECT_FILE_DIR = src\ContractionHierarchies\CMakeFiles\ContractionHierarchies.dir
+
+build src/ContractionHierarchies/CMakeFiles/ContractionHierarchies.dir/weighting.cpp.obj: CXX_COMPILER__ContractionHierarchies_Release C$:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/ContractionHierarchies/weighting.cpp || cmake_object_order_depends_target_ContractionHierarchies
+  DEP_FILE = src\ContractionHierarchies\CMakeFiles\ContractionHierarchies.dir\weighting.cpp.obj.d
+  FLAGS = -std=c++11 -O3 -O3 -DNDEBUG -std=gnu++11
+  INCLUDES = -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/ContractionHierarchies/include -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/Serialization -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/Catch2/single_include/catch2 -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/pugixml/src -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/cereal/include
+  OBJECT_DIR = src\ContractionHierarchies\CMakeFiles\ContractionHierarchies.dir
+  OBJECT_FILE_DIR = src\ContractionHierarchies\CMakeFiles\ContractionHierarchies.dir
+
+build src/ContractionHierarchies/CMakeFiles/ContractionHierarchies.dir/__/__/dependencies/pugixml/src/pugixml.cpp.obj: CXX_COMPILER__ContractionHierarchies_Release C$:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/pugixml/src/pugixml.cpp || cmake_object_order_depends_target_ContractionHierarchies
+  DEP_FILE = src\ContractionHierarchies\CMakeFiles\ContractionHierarchies.dir\__\__\dependencies\pugixml\src\pugixml.cpp.obj.d
+  FLAGS = -std=c++11 -O3 -O3 -DNDEBUG -std=gnu++11
+  INCLUDES = -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/ContractionHierarchies/include -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/Serialization -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/Catch2/single_include/catch2 -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/pugixml/src -IC:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/dependencies/cereal/include
+  OBJECT_DIR = src\ContractionHierarchies\CMakeFiles\ContractionHierarchies.dir
+  OBJECT_FILE_DIR = src\ContractionHierarchies\CMakeFiles\ContractionHierarchies.dir\__\__\dependencies\pugixml\src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target ContractionHierarchies
+
+
+#############################################
+# Link the static library src\ContractionHierarchies\libContractionHierarchies.a
+
+build src/ContractionHierarchies/libContractionHierarchies.a: CXX_STATIC_LIBRARY_LINKER__ContractionHierarchies_Release src/ContractionHierarchies/CMakeFiles/ContractionHierarchies.dir/queue.cpp.obj src/ContractionHierarchies/CMakeFiles/ContractionHierarchies.dir/graph.cpp.obj src/ContractionHierarchies/CMakeFiles/ContractionHierarchies.dir/bidirectionalSearch.cpp.obj src/ContractionHierarchies/CMakeFiles/ContractionHierarchies.dir/hierarchyConstructor.cpp.obj src/ContractionHierarchies/CMakeFiles/ContractionHierarchies.dir/osmParser.cpp.obj src/ContractionHierarchies/CMakeFiles/ContractionHierarchies.dir/weighting.cpp.obj src/ContractionHierarchies/CMakeFiles/ContractionHierarchies.dir/__/__/dependencies/pugixml/src/pugixml.cpp.obj
+  LANGUAGE_COMPILE_FLAGS = -std=c++11 -O3 -O3 -DNDEBUG
+  OBJECT_DIR = src\ContractionHierarchies\CMakeFiles\ContractionHierarchies.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = src\ContractionHierarchies\libContractionHierarchies.a
+  TARGET_PDB = ContractionHierarchies.a.dbg
+
+
+#############################################
+# Utility command for install/local
+
+build src/ContractionHierarchies/CMakeFiles/install/local.util: CUSTOM_COMMAND src/ContractionHierarchies/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release\src\ContractionHierarchies && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build src/ContractionHierarchies/install/local: phony src/ContractionHierarchies/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install
+
+build src/ContractionHierarchies/CMakeFiles/install.util: CUSTOM_COMMAND src/ContractionHierarchies/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release\src\ContractionHierarchies && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build src/ContractionHierarchies/install: phony src/ContractionHierarchies/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build src/ContractionHierarchies/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release\src\ContractionHierarchies && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build src/ContractionHierarchies/edit_cache: phony src/ContractionHierarchies/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build src/ContractionHierarchies/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release\src\ContractionHierarchies && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine -BC:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build src/ContractionHierarchies/rebuild_cache: phony src/ContractionHierarchies/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build src/ContractionHierarchies/list_install_components: phony
+
+
+#############################################
+# Utility command for install/strip
+
+build src/ContractionHierarchies/CMakeFiles/install/strip.util: CUSTOM_COMMAND src/ContractionHierarchies/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release\src\ContractionHierarchies && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build src/ContractionHierarchies/install/strip: phony src/ContractionHierarchies/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# C:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for install/local
+
+build tests/CMakeFiles/install/local.util: CUSTOM_COMMAND tests/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release\tests && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build tests/install/local: phony tests/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install
+
+build tests/CMakeFiles/install.util: CUSTOM_COMMAND tests/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release\tests && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build tests/install: phony tests/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build tests/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release\tests && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build tests/edit_cache: phony tests/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build tests/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release\tests && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine -BC:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build tests/rebuild_cache: phony tests/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build tests/list_install_components: phony
+
+
+#############################################
+# Utility command for install/strip
+
+build tests/CMakeFiles/install/strip.util: CUSTOM_COMMAND tests/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine\cmake-build-release\tests && "C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build tests/install/strip: phony tests/CMakeFiles/install/strip.util
 
 # =============================================================================
 # Target aliases.
 
-build OsmRoutingEngine: phony OsmRoutingEngine.exe
+build ContractionHierarchies: phony src/ContractionHierarchies/libContractionHierarchies.a
 
-build RoutingEngine: phony src/RoutingEngine/libRoutingEngine.a
+build RoutingEngine: phony src/RoutingEngine.exe
 
-build libRoutingEngine.a: phony src/RoutingEngine/libRoutingEngine.a
+build RoutingEngine.exe: phony src/RoutingEngine.exe
+
+build Serialization: phony src/Serialization/libSerialization.a
+
+build libContractionHierarchies.a: phony src/ContractionHierarchies/libContractionHierarchies.a
+
+build libSerialization.a: phony src/Serialization/libSerialization.a
 
 # =============================================================================
 # Folder targets.
@@ -207,16 +546,42 @@ build libRoutingEngine.a: phony src/RoutingEngine/libRoutingEngine.a
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/jmsad/Desktop/CPP Programs/CLion Projects/OsmRoutingEngine/cmake-build-release
+# Folder: C:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/cmake-build-release
 
-build all: phony OsmRoutingEngine.exe src/RoutingEngine/all
+build all: phony src/all tests/all
 
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/jmsad/Desktop/CPP Programs/CLion Projects/OsmRoutingEngine/cmake-build-release/src/RoutingEngine
+# Folder: C:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/cmake-build-release/src
 
-build src/RoutingEngine/all: phony src/RoutingEngine/libRoutingEngine.a
+build src/all: phony src/RoutingEngine.exe src/Serialization/all src/ContractionHierarchies/all
+
+# =============================================================================
+
+#############################################
+# Folder: C:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/cmake-build-release/src/ContractionHierarchies
+
+build src/ContractionHierarchies/all: phony src/ContractionHierarchies/libContractionHierarchies.a
+
+# =============================================================================
+
+#############################################
+# Folder: C:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/cmake-build-release/src/Serialization
+
+build src/Serialization/all: phony src/Serialization/libSerialization.a
+
+# =============================================================================
+
+#############################################
+# Folder: C:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/cmake-build-release/tests
+
+build tests/all: phony
+
+# =============================================================================
+# Unknown Build Time Dependencies.
+# Tell Ninja that they may appear as side effects of build rules
+# otherwise ordered by order-only dependencies.
 
 # =============================================================================
 # Built-in targets
@@ -225,14 +590,14 @@ build src/RoutingEngine/all: phony src/RoutingEngine/libRoutingEngine.a
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | ../CMakeLists.txt ../src/RoutingEngine/CMakeLists.txt C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/WindowsPaths.cmake CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeRCCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | ../CMakeLists.txt ../src/CMakeLists.txt ../src/ContractionHierarchies/CMakeLists.txt ../src/Serialization/CMakeLists.txt ../tests/CMakeLists.txt C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/WindowsPaths.cmake CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeRCCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build ../CMakeLists.txt ../src/RoutingEngine/CMakeLists.txt C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/WindowsPaths.cmake CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeRCCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake: phony
+build ../CMakeLists.txt ../src/CMakeLists.txt ../src/ContractionHierarchies/CMakeLists.txt ../src/Serialization/CMakeLists.txt ../tests/CMakeLists.txt C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/WindowsPaths.cmake CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeRCCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake: phony
 
 
 #############################################

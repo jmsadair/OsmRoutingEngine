@@ -1,5 +1,5 @@
 #pragma once
-#include "graph.h"
+#include "../src/RoutingEngine/include/graph.h"
 #include <chrono>
 
 // The purpose of this class is to test the correctness and execution time of the contraction hierarchie routing algorithm.
