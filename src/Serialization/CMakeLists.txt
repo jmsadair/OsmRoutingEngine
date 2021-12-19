@@ -1,6 +1,0 @@
-cmake_minimum_required(VERSION 3.2)
-project(Serialization)
-set(SOURCE_FILES serialize.cpp)
-add_library(Serialization SHARED STATIC ${SOURCE_FILES})
-install(TARGETS Serialization DESTINATION ../../${ENGINE_INSTALL_LIB_DIR})
-install(FILES serialize.h DESTINATION ../../${ENGINE_INSTALL_INCLUDE_DIR})

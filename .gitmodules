@@ -1,13 +1,10 @@
-[submodule "dependencies/cereal"]
-	path = dependencies/cereal
+[submodule "src/ContractionHierarchies/lib/cereal"]
+	path = src/ContractionHierarchies/lib/cereal
 	url = https://github.com/USCiLab/cereal.git
-[submodule "dependencies/pugixml"]
-	path = dependencies/pugixml
+[submodule "src/ContractionHierarchies/lib/pugixml"]
+	path = src/ContractionHierarchies/lib/pugixml
 	url = https://github.com/zeux/pugixml.git
-[submodule "dependencies/Catch2"]
-	path = dependencies/Catch2
+[submodule "tests/lib/Catch2"]
+	path = tests/lib/Catch2
 	url = https://github.com/catchorg/Catch2.git
 	branch = v2.x
-[submodule "dependencies/pybind11"]
-	path = dependencies/pybind11
-	url = https://github.com/pybind/pybind11.git
