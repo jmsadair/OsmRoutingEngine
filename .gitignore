@@ -7,6 +7,6 @@
 /dataSources/
 /dataSources.local.xml
 # Ignore cmake-build-release folder
-cmake_build_release
+cmake_build_release/
 # Ignore .idea folder
-.idea
+.idea/
