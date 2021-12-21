@@ -1,0 +1,12 @@
+# ninja log v5
+28	412	6618297061184014	src/ContractionHierarchies/CMakeFiles/ContractionHierarchies.dir/Weighting.cpp.obj	ee66c1bc6041da50
+21	2253	6618297079589679	src/ContractionHierarchies/CMakeFiles/ContractionHierarchies.dir/BidirectionalSearch.cpp.obj	2ebca6f3922e4653
+24	2281	6618297079902203	src/ContractionHierarchies/CMakeFiles/ContractionHierarchies.dir/Graph.cpp.obj	a82744aa8a4163eb
+18	2363	6618297080683440	src/ContractionHierarchies/CMakeFiles/ContractionHierarchies.dir/HierarchyConstructor.cpp.obj	f5dc589eb74afb34
+0	2382	6618297080839692	src/CMakeFiles/RoutingEngine.dir/main.cpp.obj	4fc53675362fadc2
+16	2907	6618297086053008	src/ContractionHierarchies/CMakeFiles/ContractionHierarchies.dir/OsmParser.cpp.obj	f7c0ac4ae1bbaafe
+37	5697	6618297114052107	src/ContractionHierarchies/lib/pugixml/CMakeFiles/pugixml-static.dir/src/pugixml.cpp.obj	ea42a1900467e031
+31	5752	6618297114520855	src/ContractionHierarchies/CMakeFiles/ContractionHierarchies.dir/lib/pugixml/src/pugixml.cpp.obj	e2f7f3cce6a79206
+5698	5767	6618297114707025	src/ContractionHierarchies/lib/pugixml/libpugixml.a	93b448fa7511dd7
+5767	5830	6618297115322615	src/ContractionHierarchies/libContractionHierarchies.a	1c4cf3b669f22928
+5831	5996	6618297116931420	src/RoutingEngine.exe	2033dab97a95b659

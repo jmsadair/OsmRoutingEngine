@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "src/ContractionHierarchies/lib/cereal/sandbox/sandbox",
+		"source" : "src/ContractionHierarchies/lib/cereal/sandbox"
+	}
+}

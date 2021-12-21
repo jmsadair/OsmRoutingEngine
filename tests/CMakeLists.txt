@@ -9,4 +9,4 @@ set(SOURCE_FILES src/test.cpp)
 
 add_executable(ContractionHierarchiesTests ${SOURCE_FILES})
 target_link_libraries(ContractionHierarchiesTests ContractionHierarchies Catch2)
-install(TARGETS ContractionHierarchiesTests DESTINATION bin)
+install(TARGETS ContractionHierarchiesTests DESTINATION ${ENGINE_INSTALL_BIN_DIR})

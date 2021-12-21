@@ -1,6 +1,6 @@
-#include "hierarchyConstructor.h"
-#include "osmParser.h"
-#include "serialize.h"
+#include "HierarchyConstructor.h"
+#include "OsmParser.h"
+#include "Serialize.h"
 
 /**
 * This is a basic demonstration of how one might use CppRoutingEngine. The code below transforms an OSM file
@@ -9,22 +9,22 @@
 */
 int main() {
     // Takes an osm file as an argument.
-    parser osm("example_map_data.osm");
+    Parser osm("example_map_data.osm");
 
     // Returns a pair containing a graph object and unordered map containing node IDs as keys and coordinates as values
     auto example_routing_data = osm.get_routing_data();
 
     // Takes a graph object as an argument.
-    constructor hierarchy_builder(example_routing_data.first);
+    HierarchyConstructor builder(example_routing_data.first);
 
     // Transforms graph into a routing hierarchy.
-    hierarchy_builder.contract_graph();
+    builder.contract_graph();
 
     // Finds the shortest path between two vertices in the graph.
     example_routing_data.first.get_shortest_path(3939562845, 1239440973);
 
     // Saves the graph in a binary file to avoid parsing and preprocessing the data in the future.
-    serialize::save("example_graph.bin", example_routing_data.first);
+    Serialize::save("example_graph.bin", example_routing_data.first);
 
     return 0;
 }

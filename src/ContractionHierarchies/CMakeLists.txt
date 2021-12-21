@@ -4,12 +4,11 @@ project(ContractionHierarchies)
 
 set(SKIP_PERFORMANCE_COMPARISON ON CACHE BOOL "" FORCE)
 set(SOURCE_FILES
-        queue.cpp
-        graph.cpp
-        bidirectionalSearch.cpp
-        hierarchyConstructor.cpp
-        osmParser.cpp
-        weighting.cpp
+        Graph.cpp
+		BidirectionalSearch.cpp
+		HierarchyConstructor.cpp
+		OsmParser.cpp
+		Weighting.cpp
         lib/pugixml/src/pugixml.cpp)
 
 add_subdirectory(lib/cereal EXCLUDE_FROM_ALL lib/cereal/sandbox)
@@ -21,13 +20,13 @@ include_directories(include)
 
 add_library(ContractionHierarchies SHARED STATIC ${SOURCE_FILES})
 target_link_libraries(ContractionHierarchies pugixml cereal)
-install(TARGETS ContractionHierarchies DESTINATION ../../${ENGINE_INSTALL_LIB_DIR})
-install(FILES 
-		include/queue.h
-        include/graph.h
-        include/bidirectionalSearch.h
-        include/hierarchyConstructor.h
-        include/osmParser.h
-        include/weighting.h
-		include/serialize.h
-        DESTINATION ../../${ENGINE_INSTALL_INCLUDE_DIR})
+install(TARGETS ContractionHierarchies DESTINATION ${ENGINE_INSTALL_LIB_DIR})
+install(FILES
+        include/Queue.h
+		include/Graph.h
+		include/BidirectionalSearch.h
+		include/HierarchyConstructor.h
+		include/OsmParser.h
+		include/Weighting.h
+		include/Serialize.h
+        DESTINATION ${ENGINE_HEADERS_DIR})

@@ -1,0 +1,216 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "tests/ContractionHierarchiesTests.exe"
+		},
+		{
+			"path" : "tests/ContractionHierarchiesTests.pdb"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"install",
+			"target_link_libraries",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"tests/CMakeLists.txt",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 10,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 12,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 11,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 12,
+				"parent" : 4
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 6,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " -std=c++11 -O3 -O3 -DNDEBUG"
+				},
+				{
+					"fragment" : "-std=gnu++11"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/ContractionHierarchies/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "C:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/tests/lib/Catch2/single_include/catch2"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/ContractionHierarchies/lib/pugixml/src"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/src/ContractionHierarchies/lib/cereal/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/tests/lib/Catch2/single_include"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					3,
+					3,
+					3,
+					3,
+					3,
+					3,
+					3,
+					3,
+					3,
+					3,
+					3,
+					3,
+					3,
+					3,
+					3,
+					3,
+					3,
+					3,
+					3,
+					3
+				],
+				"standard" : "11"
+			},
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 3,
+			"id" : "ContractionHierarchies::@7f8880526c22ffa7c32f"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "pugixml-static::@36a243c730adceb800e9"
+		}
+	],
+	"id" : "ContractionHierarchiesTests::@a44f0ac069e85531cdee",
+	"install" : 
+	{
+		"destinations" : 
+		[
+			{
+				"backtrace" : 2,
+				"path" : "bin"
+			}
+		],
+		"prefix" : 
+		{
+			"path" : "C:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine"
+		}
+	},
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-std=c++11 -O3 -O3 -DNDEBUG",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "src\\ContractionHierarchies\\libContractionHierarchies.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "src\\ContractionHierarchies\\lib\\pugixml\\libpugixml.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "ContractionHierarchiesTests",
+	"nameOnDisk" : "ContractionHierarchiesTests.exe",
+	"paths" : 
+	{
+		"build" : "tests",
+		"source" : "tests"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "tests/src/test.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}
