@@ -1,5 +1,0 @@
-"C:\Program Files\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Release "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2021.3/bin/ninja/win/ninja.exe" -G Ninja C:\Users\jmsad\Desktop\CPP-Programs\CLion-Projects\OsmRoutingEngine
--- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
--- Configuring done
--- Generating done
--- Build files have been written to: C:/Users/jmsad/Desktop/CPP-Programs/CLion-Projects/OsmRoutingEngine/cmake-build-release
