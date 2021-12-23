@@ -1,10 +1,10 @@
 #include "HierarchyConstructor.h"
 
-HierarchyConstructor::HierarchyConstructor(Graph& graph) : graph_(graph), total_edges_added_(0) { vertices_ = graph_.get_vertices(); }
+HierarchyConstructor::HierarchyConstructor(Graph& graph) : graph_(graph), total_edges_added_(0) { vertices_ = graph_.getVertices(); }
 
-void HierarchyConstructor::contract_graph() {
+void HierarchyConstructor::contractGraph() {
     // We construct the priority Queue by simulating the contraction of all vertices.
-    Queue<HeapElement> queue = get_initial_ordering(1000);
+    Queue<HeapElement> queue = getInitialOrdering();
 
     // The order in which the vertices are contracted must be recorded for route finding later on.
     uint64_t ordering_count = 0;
@@ -12,14 +12,14 @@ void HierarchyConstructor::contract_graph() {
     std::cout << "Contracting graph..." << std::endl;
 
     while (!queue.empty()) {
-        const auto contracted_vertex = get_next(1000, &queue);
-        graph_.add_ordering(contracted_vertex, ordering_count);
+        const auto contracted_vertex = getNext(&queue);
+        graph_.addOrdering(contracted_vertex, ordering_count);
         ordering_count++;
         if (ordering_count % 1000 == 0) { std::cout << "Contracted " << ordering_count << " vertices." << std::endl; }
-        contract_vertex(contracted_vertex, 1000);
+        contractVertex(contracted_vertex);
 
         // We update the deleted neighbors counter of all vertices adjacent to the Vertex being contracted.
-        contracted_neighbors(contracted_vertex);
+        contractedNeighbors(contracted_vertex);
 
         /**
         * Removes all edges incident to the contracted Vertex, as they will not be useful in future contractions. This
@@ -45,22 +45,22 @@ void HierarchyConstructor::contract_graph() {
     std::cout << "Optimizing edges..." << std::endl;
 
     // Optimizing the graph removes any edges that go from a Vertex of higher order to a Vertex of lower order, as these will never be on the shortest path.
-    graph_.optimize_edges();
+    graph_.optimizeEdges();
     std::cout << "Edge optimization phase complete." << std::endl;
 }
 
-int HierarchyConstructor::contract_vertex(const uint64_t contracted_vertex, const int hop_limit, const bool simulated) {
+int HierarchyConstructor::contractVertex(uint64_t contracted_vertex, bool simulated) {
     std::vector<std::tuple<uint64_t, uint64_t, double>> shortcuts_to_add;
     shortcuts_to_add.reserve(5);
     int added_shortcuts = 0;
-    const double max_out_distance = get_max_out_distance(contracted_vertex);
+    const double max_out_distance = getMaxOutDistance(contracted_vertex);
 
     // Loops through the incoming vertices of the contracted Vertex.
     for (const auto& v : vertices_[contracted_vertex].in_edges) {
         // We ignore the Vertex that is currently being contracted.
         if (v.first == contracted_vertex) { continue; }
 
-        auto dists = witness_search(v.first, contracted_vertex, v.second + max_out_distance, hop_limit);
+        auto dists = witnessSearch(v.first, contracted_vertex, v.second + max_out_distance);
 
         // Loops through the outgoing vertices of the contracted Vertex.
         for (const auto& w : vertices_[contracted_vertex].out_edges) {
@@ -76,11 +76,12 @@ int HierarchyConstructor::contract_vertex(const uint64_t contracted_vertex, cons
             }
         }
     }
-    if (!shortcuts_to_add.empty()) { add_shortcuts(contracted_vertex, &shortcuts_to_add); }
+    if (!shortcuts_to_add.empty()) { addShortcuts(contracted_vertex, &shortcuts_to_add); }
     return added_shortcuts;
 }
 
-std::unordered_map<uint64_t, double> HierarchyConstructor::witness_search(const uint64_t source, const uint64_t contracted_vertex, const double max_distance, const int hop_limit) {
+std::unordered_map<uint64_t, double>
+HierarchyConstructor::witnessSearch(uint64_t source, uint64_t contracted_vertex, double max_distance) {
     Queue<HeapElement> queue;
     std::unordered_map<uint64_t, double> dists;
     std::unordered_set<uint64_t> visited, targets;
@@ -93,7 +94,7 @@ std::unordered_map<uint64_t, double> HierarchyConstructor::witness_search(const 
     }
 
     // Standard Dijkstra search.
-    while (!queue.empty() && targets_seen < targets.size() && queue.peek()->value <= max_distance && hops < hop_limit) {
+    while (!queue.empty() && targets_seen < targets.size() && queue.peek().value <= max_distance && hops < HOP_LIMIT) {
         HeapElement u = queue.pop();
         hops++;
         visited.insert(u.id);
@@ -111,42 +112,42 @@ std::unordered_map<uint64_t, double> HierarchyConstructor::witness_search(const 
     return dists;
 }
 
-Queue<HeapElement> HierarchyConstructor::get_initial_ordering(const int hop_limit) {
+Queue<HeapElement> HierarchyConstructor::getInitialOrdering() {
     std::cout << "Getting initial node ordering..." << std::endl;
-    Queue<HeapElement> queue(vertices_.size());
+    Queue<HeapElement> queue(int(vertices_.size()));
 
     // We simulate the contraction of all vertices in the graph to get a good node ordering.
     for (const auto& x : vertices_) {
-        queue.push(HeapElement(x.first, get_priority_term(x.first, hop_limit, true)));
+        queue.push(HeapElement(x.first, getPriorityTerm(x.first, true)));
     }
 
     std::cout << "Node ordering phase complete." << std::endl;
     return queue;
 }
 
-uint64_t HierarchyConstructor::get_next(const int hop_limit, Queue<HeapElement>* queue) {
+uint64_t HierarchyConstructor::getNext(Queue<HeapElement> *queue) {
     uint64_t temp_vertex = 0;
 
-    while (temp_vertex != queue->peek()->id) {
-        temp_vertex = queue->peek()->id;
+    while (temp_vertex != queue->peek().id) {
+        temp_vertex = queue->peek().id;
         // Lazy update.
-        queue->lazyUpdate(HeapElement(queue->peek()->id, get_priority_term(temp_vertex, hop_limit)));
+        queue->lazyUpdate(HeapElement(queue->peek().id, getPriorityTerm(queue->peek().id)));
     }
 
     const uint64_t contracted_vertex = queue->pop().id;
     return contracted_vertex;
 }
 
-void HierarchyConstructor::add_shortcuts(const uint64_t contracted_vertex, const std::vector<std::tuple<uint64_t, uint64_t, double>>* shortcuts_needed) {
-    for (const auto & it : *shortcuts_needed) {
-        graph_.add_shortcut(std::get<0>(it), std::get<1>(it), contracted_vertex, std::get<2>(it));
+void HierarchyConstructor::addShortcuts(uint64_t contracted_vertex, const std::vector<std::tuple<uint64_t, uint64_t, double>>* shortcuts) {
+    for (const auto & it : *shortcuts) {
+        graph_.addShortcut(std::get<0>(it), std::get<1>(it), contracted_vertex, std::get<2>(it));
         vertices_[std::get<0>(it)].out_edges[std::get<1>(it)] =  std::get<2>(it);
         vertices_[std::get<1>(it)].in_edges[std::get<0>(it)] = std::get<2>(it);
         total_edges_added_++;
     }
 }
 
-void HierarchyConstructor::contracted_neighbors(const uint64_t contracted_vertex) {
+void HierarchyConstructor::contractedNeighbors(uint64_t contracted_vertex) {
 
     // We use an unordered set to keep track of vertices that have already been incremented to avoid over counting.
     std::unordered_set<uint64_t> seen;
@@ -168,7 +169,7 @@ void HierarchyConstructor::contracted_neighbors(const uint64_t contracted_vertex
     }
 }
 
-double HierarchyConstructor::get_max_out_distance(const uint64_t contracted_vertex) const {
+double HierarchyConstructor::getMaxOutDistance(uint64_t contracted_vertex) const {
     double max_out = 0.0;
 
     for (const auto& w : vertices_.at(contracted_vertex).out_edges) {
@@ -178,21 +179,21 @@ double HierarchyConstructor::get_max_out_distance(const uint64_t contracted_vert
     return max_out;
 }
 
-int HierarchyConstructor::get_edge_difference(const uint64_t contracted_vertex, const int hop_limit) {
+int HierarchyConstructor::getEdgeDifference(uint64_t contracted_vertex) {
     // original_edges is the total number of incoming and outgoing edges that a Vertex has before contraction.
-    int original_edges = vertices_[contracted_vertex].in_edges.size() + vertices_[contracted_vertex].out_edges.size();
+    uint64_t original_edges = vertices_[contracted_vertex].in_edges.size() + vertices_[contracted_vertex].out_edges.size();
     // added_shortcuts is the number of shortcuts that must be added after contraction of a Vertex.
-    int added_shortcuts = contract_vertex(contracted_vertex, hop_limit, true);
+    int added_shortcuts = contractVertex(contracted_vertex,true);
 
-    return 30 * added_shortcuts - original_edges;
+    return int(30 * added_shortcuts - original_edges);
 }
 
-int HierarchyConstructor::get_priority_term(const uint64_t contracted_vertex, const int hop_limit, const bool simulated) {
+int HierarchyConstructor::getPriorityTerm(uint64_t contracted_vertex, bool simulated) {
     if (simulated) {
-        return get_edge_difference(contracted_vertex, hop_limit);
+        return getEdgeDifference(contracted_vertex);
     }
     else {
-        return get_edge_difference(contracted_vertex, hop_limit) + 20 * vertices_[contracted_vertex].deleted_neighbors;
+        return getEdgeDifference(contracted_vertex) + 20 * vertices_[contracted_vertex].deleted_neighbors;
     }
 }
 

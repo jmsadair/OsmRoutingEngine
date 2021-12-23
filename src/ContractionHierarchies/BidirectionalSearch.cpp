@@ -5,7 +5,7 @@ BidirectionalSearch::BidirectionalSearch(const std::unordered_map<uint64_t, Vert
         : vertices_(vertices), shortcuts_(shortcuts), queue_(100)
 {}
 
-std::pair<std::vector<uint64_t>, double> BidirectionalSearch::execute_search(const uint64_t source, const uint64_t target) {
+std::pair<std::vector<uint64_t>, double> BidirectionalSearch::executeSearch(uint64_t source, uint64_t target, bool standard) {
     // u is the Vertex being settled and intersection is the Vertex at which the forward and backwards search meet.
     uint64_t u, intersection = 0;
     // length of the shortest path found so far.
@@ -18,15 +18,15 @@ std::pair<std::vector<uint64_t>, double> BidirectionalSearch::execute_search(con
     queue_.push(HeapElement(target, 0, 0));
 
     while (!queue_.empty()) {
-        if (queue_.peek()->direction == 1) {
+        if (queue_.peek().direction == 1) {
             u = queue_.pop().id;
             visited_source_.insert(u);
-            relax_edge(u, false, false);
+            relax_edge(u, false, standard);
         }
         else {
             u = queue_.pop().id;
             visited_target_.insert(u);
-            relax_edge(u, true, false);
+            relax_edge(u, true, standard);
         }
         /**
         * It is not sufficient to abort the search as soon as the backward search and forward search meet.
@@ -37,50 +37,21 @@ std::pair<std::vector<uint64_t>, double> BidirectionalSearch::execute_search(con
             && dist_source_[u] + dist_target_[u] < best) {
             intersection = u;
             best = dist_source_[u] + dist_target_[u];
-            if (best <= queue_.peek()->value) { break; }
-        }
-    }
-    auto shortest_path = reconstruct_path(source, target, intersection);
-    return std::make_pair(unpack_path(&shortest_path), dist_source_[intersection] + dist_target_[intersection]);
-}
-
-std::pair<std::vector<uint64_t>, double> BidirectionalSearch::execute_standard_search(const uint64_t source, const uint64_t target) {
-    // u is the Vertex being settled and intersection is the Vertex at which the forward and backwards search meet.
-    uint64_t u, intersection = 0;
-    // length of the shortest path found so far.
-    double best = INF_;
-    dist_source_[source] = 0;
-    dist_target_[target] = 0;
-    prev_source_[source] = -1;
-    prev_target_[target] = -1;
-    queue_.push(HeapElement(source, 0, 1));
-    queue_.push(HeapElement(target, 0, 0));
-
-    while (!queue_.empty()) {
-        if (queue_.peek()->direction == 1) {
-            u = queue_.pop().id;
-            visited_source_.insert(u);
-            relax_edge(u, false, true);
-        }
-        else {
-            u = queue_.pop().id;
-            visited_target_.insert(u);
-            relax_edge(u, true, true);
-        }
-        /**
-        * It is not sufficient to abort the search as soon as the backward search and forward search meet.
-        * We instead abort the search when the length of the shortest path found so far is less than or
-        * equal to the distance to the next Vertex in the Queue.
-        */
-        if (visited_source_.find(u) != visited_source_.end() && visited_target_.find(u) != visited_target_.end() && dist_source_[u] + dist_target_[u] < best) {
-            intersection = u;
-            best = dist_source_[u] + dist_target_[u];
-            if (best <= queue_.peek()->value) { break; }
+            if (queue_.empty() || best <= queue_.peek().value) { break; }
         }
     }
 
-    auto path = reconstruct_path(source, target, intersection);
-    return std::make_pair(path, dist_source_[intersection] + dist_target_[intersection]);
+    if (intersection != 0) {
+        auto path = reconstructPath(source, target, intersection);
+        if (standard) {
+            return std::make_pair(path, dist_source_[intersection] + dist_target_[intersection]);
+        } else {
+            return std::make_pair(unpackPath(&path), dist_source_[intersection] + dist_target_[intersection]);
+        }
+    }
+    else {
+        return std::make_pair(std::vector<uint64_t>{}, -1);
+    }
 }
 
 void BidirectionalSearch::relax_edge(const uint64_t vertex_id, const bool backward, const bool standard) {
@@ -141,46 +112,39 @@ void BidirectionalSearch::relax_edge(const uint64_t vertex_id, const bool backwa
     }
 }
 
-std::vector<uint64_t> BidirectionalSearch::reconstruct_path(const uint64_t source, const uint64_t target, const uint64_t intersection) {
+std::vector<uint64_t> BidirectionalSearch::reconstructPath(uint64_t source, uint64_t target, uint64_t intersection) {
     std::vector<uint64_t> path, path_source, path_target;
     path_source.reserve(prev_source_.size());
     path_target.reserve(prev_target_.size());
     path.reserve(prev_source_.size() + prev_target_.size());
 
-    if (!intersection) {
-        path.push_back(source);
-        path.push_back(target);
-        return path;
-    }
-    else {
-        auto vertex_one_id = prev_source_[intersection];
-        auto vertex_two_id = intersection;
-        while (vertex_one_id != -1 || vertex_two_id != -1) {
-            if (vertex_one_id != -1) {
-                path_source.push_back(vertex_one_id);
-                vertex_one_id = prev_source_[vertex_one_id];
-            }
-            if (vertex_two_id != -1) {
-                path_target.push_back(vertex_two_id);
-                vertex_two_id = prev_target_[vertex_two_id];
-            }
+    auto vertex_one_id = prev_source_[intersection];
+    auto vertex_two_id = intersection;
+    while (vertex_one_id != -1 || vertex_two_id != -1) {
+        if (vertex_one_id != -1) {
+            path_source.push_back(vertex_one_id);
+            vertex_one_id = prev_source_[vertex_one_id];
         }
-        std::reverse(path_source.begin(), path_source.end());
-        path.reserve(path_source.size() + path_target.size());
-        path.insert(path.end(), path_source.begin(), path_source.end());
-        path.insert(path.end(), path_target.begin(), path_target.end());
-        return path;
+        if (vertex_two_id != -1) {
+            path_target.push_back(vertex_two_id);
+            vertex_two_id = prev_target_[vertex_two_id];
+        }
     }
+    std::reverse(path_source.begin(), path_source.end());
+    path.reserve(path_source.size() + path_target.size());
+    path.insert(path.end(), path_source.begin(), path_source.end());
+    path.insert(path.end(), path_target.begin(), path_target.end());
+    return path;
 }
 
-std::vector<uint64_t> BidirectionalSearch::unpack_shortcut(uint64_t start, uint64_t end) {
+std::vector<uint64_t> BidirectionalSearch::unpackShortcut(uint64_t start, uint64_t end) {
     std::vector<uint64_t> stack;
     std::vector<uint64_t> unpacked_shortcuts;
     stack.push_back(end);
 
     while (!stack.empty()) {
         auto next_id = stack.back();
-        if (is_shortcut(start, next_id)) {
+        if (isShortcut(start, next_id)) {
             stack.push_back(shortcuts_->at(start).at(next_id));
         }
         else {
@@ -192,15 +156,15 @@ std::vector<uint64_t> BidirectionalSearch::unpack_shortcut(uint64_t start, uint6
     return unpacked_shortcuts;
 }
 
-std::vector<uint64_t> BidirectionalSearch::unpack_path(const std::vector<uint64_t>* shortest_path) {
+std::vector<uint64_t> BidirectionalSearch::unpackPath(std::vector<uint64_t>* shortest_path) {
     int i = 0;
     std::vector<uint64_t> path;
     path.push_back(shortest_path->at(0));
 
     // Unpacks all shortcuts in the path.
     while (i < shortest_path->size() - 1) {
-        if (is_shortcut(shortest_path->at(i), shortest_path->at(i + 1))) {
-            auto unpacked_shortcuts = unpack_shortcut(shortest_path->at(i), shortest_path->at(i + 1));
+        if (isShortcut(shortest_path->at(i), shortest_path->at(i + 1))) {
+            auto unpacked_shortcuts = unpackShortcut(shortest_path->at(i), shortest_path->at(i + 1));
             path.insert(path.end(), unpacked_shortcuts.begin(), unpacked_shortcuts.end());
         }
         else {
@@ -211,7 +175,7 @@ std::vector<uint64_t> BidirectionalSearch::unpack_path(const std::vector<uint64_
     return path;
 }
 
-bool BidirectionalSearch::is_shortcut(const uint64_t start, const uint64_t end) {
+bool BidirectionalSearch::isShortcut(uint64_t start, uint64_t end) {
     if (shortcuts_->find(start) != shortcuts_->end() && shortcuts_->at(start).find(end) != shortcuts_->at(start).end()) {
         return true;
     }

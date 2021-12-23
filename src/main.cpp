@@ -18,10 +18,10 @@ int main() {
     HierarchyConstructor builder(example_routing_data.first);
 
     // Transforms graph into a routing hierarchy.
-    builder.contract_graph();
+    builder.contractGraph();
 
     // Finds the shortest path between two vertices in the graph.
-    example_routing_data.first.get_shortest_path(3939562845, 1239440973);
+    example_routing_data.first.getShortestPath(3939562845, 1239440973);
 
     // Saves the graph in a binary file to avoid parsing and preprocessing the data in the future.
     Serialize::save("example_graph.bin", example_routing_data.first);

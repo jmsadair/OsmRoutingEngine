@@ -1,12 +1,5 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-# Editor-based HTTP Client requests
-/httpRequests/
-# Datasource local storage ignored files
-/dataSources/
-/dataSources.local.xml
-# Ignore cmake-build-release folder
-cmake_build_release/
+# Ignore cmake-build-release and cmake-build-debug folder
+cmake-build-release
+cmake-build-debug
 # Ignore .idea folder
-.idea/
+.idea

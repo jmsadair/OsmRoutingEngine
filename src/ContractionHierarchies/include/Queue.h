@@ -75,9 +75,12 @@ public:
     explicit Queue(const int size = 0) { heap_.reserve(size); }
 
     // Gets the value of the item in the Queue with the highest priority. Returns a nullptr if the Queue is empty.
-    T* peek() {
-        if (!heap_.empty()) { return &heap_[0]; }
-        return nullptr;
+    const T& peek() {
+        if (!heap_.empty()) {
+            return heap_[0];
+        } else {
+            throw std::logic_error("Cannot peek an empty queue.");
+        }
     }
 
     // Deletes an item from the Queue.

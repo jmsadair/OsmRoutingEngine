@@ -20,9 +20,11 @@ class HierarchyConstructor {
 
 private:
 
+    static const int HOP_LIMIT = 1000;
+
     Graph& graph_;
 
-    long long total_edges_added_;
+    int64_t total_edges_added_;
 
     std::unordered_map<uint64_t, Vertex> vertices_;
 
@@ -32,7 +34,7 @@ private:
     * is to determine the cost of contracting the Vertex. The cost of contracting a Vertex is the number of shortcut edges
     * that must be added when we remove the Vertex from the graph.
     */
-    int contract_vertex(uint64_t contracted_vertex, int hop_limit, bool simulated = false);
+    int contractVertex(uint64_t contracted_vertex, bool simulated = false);
 
     /**
     * The purpose of this method is to find witness paths between vertices. We find witness paths by applying a
@@ -42,7 +44,7 @@ private:
     * is then no hope of finding a witness path. We can also abort the search if we have settled all outgoing vertices of the Vertex being
     * contracted.
     */
-    std::unordered_map<uint64_t, double> witness_search(uint64_t source, uint64_t contracted_vertex, double max_distance, int hop_limit);
+    std::unordered_map<uint64_t, double> witnessSearch(uint64_t source, uint64_t contracted_vertex, double max_distance);
 
     /**
     * This method updates the deleted neighbor counter of all vertices adjacent to the Vertex being contracted.
@@ -50,24 +52,24 @@ private:
     * ensures uniform contraction of nodes across the graph. Uniform contraction of nodes reduces preprocessing time and
     * improves route query time.
     */
-    void contracted_neighbors(uint64_t contracted_vertex);
+    void contractedNeighbors(uint64_t contracted_vertex);
 
     /**
     * During the contraction of a node, the necessary shortcuts are gathered in a vector. This method adds those shortcuts
     * to the graph.
     */
-    void add_shortcuts(uint64_t contracted_vertex, const std::vector<std::tuple<unsigned long long, unsigned long long, double>>* shortcuts);
+    void addShortcuts(uint64_t contracted_vertex, const std::vector<std::tuple<unsigned long long, unsigned long long, double>>* shortcuts);
 
     /**
     * This method computes the Edge difference when a Vertex is contracted. The Edge difference for a Vertex u is given
     * by the number of shortcuts that must be added when u is contracted minus the total number of incoming and outgoing edges
     * that u has.
     */
-    int get_edge_difference(uint64_t contracted_vertex, int hop_limit);
+    int getEdgeDifference(uint64_t contracted_vertex);
 
 
     // Determines the maximum outgoing Edge weight of a Vertex being contracted.
-    double get_max_out_distance(uint64_t contracted_vertex) const;
+    double getMaxOutDistance(uint64_t contracted_vertex) const;
 
     /**
     * This method gets the next Vertex that is to be contracted. We check to see if the next Vertex
@@ -76,16 +78,16 @@ private:
     * Queue has the minimum cost. This process continues until we successfully find a Vertex that still
     * has the minimum cost after a simulated contraction.
     */
-    unsigned long long get_next(int hop_limit, Queue<HeapElement>* queue);
+    uint64_t getNext(Queue<HeapElement> *queue);
 
     /**
     * This method is used to compute the cost of contraction of all the vertices in the graph. A minimum binary heap is used
     * to store the vertices and their associated cost.
     */
-    Queue<HeapElement> get_initial_ordering(int hop_limit);
+    Queue<HeapElement> getInitialOrdering();
 
     // Simulates the contraction of a Vertex and computes its cost of contraction.
-    int get_priority_term(uint64_t contracted_vertex, int hop_limit, bool simulated = false);
+    int getPriorityTerm(uint64_t contracted_vertex, bool simulated = false);
 
 public:
 
@@ -93,5 +95,5 @@ public:
     explicit HierarchyConstructor(Graph& graph);
 
     // This method contracts all the vertices in the graph and adds any necessary shortcuts.
-    void contract_graph();
+    void contractGraph();
 };

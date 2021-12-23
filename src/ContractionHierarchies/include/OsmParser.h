@@ -22,7 +22,7 @@ struct Way {
     */
     std::unordered_map<std::string, std::string> tags;
 
-    Way(std::vector<uint64_t>  way_node_refs, std::unordered_map<std::string, std::string>  way_tags);
+    Way(std::vector<uint64_t>   way_node_refs, std::unordered_map<std::string, std::string>   way_tags);
 };
 
 /**

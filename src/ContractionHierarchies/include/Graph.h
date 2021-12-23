@@ -9,6 +9,7 @@
 #include <fstream>
 #include <sstream>
 
+
 /**
 * This struct stores basic information about a Vertex as well as adjacent vertices
 * and their weights.
@@ -95,40 +96,40 @@ public:
     * make up the Edge. If the start or end Vertex is not in the graph, it will be added. This method should NOT
     * be used when adding a shortcut Edge.
     */
-    void add_edge(uint64_t start, uint64_t end, std::vector<uint64_t> *nodes, double weight = 0.0, bool bidirectional = false);
-    void add_edge(uint64_t start, uint64_t end, double weight = 0.0, bool bidirectional = false);
+    void addEdge(uint64_t start, uint64_t end, std::vector<uint64_t> *nodes, double weight = 0.0, bool bidirectional = false);
+    void addEdge(uint64_t start, uint64_t end, double weight = 0.0, bool bidirectional = false);
 
     // Checks whether a given Edge is present in the graph or not (checks shortcut edges too).
-    bool edge_exists(uint64_t start, uint64_t end);
+    bool edgeExists(uint64_t start, uint64_t end);
 
-    void remove_edge(uint64_t start, uint64_t end);
+    void removeEdge(uint64_t start, uint64_t end);
 
     /**
     * This method is used during the contraction of the graph. Adds the Edge and records the shortcut for later use
     * in routing.
     */
-    void add_shortcut(uint64_t start, uint64_t end, uint64_t through, double weight);
+    void addShortcut(uint64_t start, uint64_t end, uint64_t through, double weight);
 
     // Updates the importance of a Vertex during hierarchy construction.
-    void add_ordering(uint64_t vertex, uint64_t ordering);
+    void addOrdering(uint64_t vertex, uint64_t ordering);
 
-    uint64_t get_num_vertices() const { return vertices_.size(); }
+    uint64_t getNumVertices() const { return vertices_.size(); }
 
-    uint64_t get_num_edges() const { return num_edges_; }
+    uint64_t getNumEdges() const { return num_edges_; }
 
-    std::unordered_map<uint64_t, Vertex> get_vertices() const { return vertices_; }
+    std::unordered_map<uint64_t, Vertex> getVertices() const { return vertices_; }
 
     /**
     * Computes the shortest path using a modified bidirectional search algorithm. If standard is set to true, a standard bidirectional Dijkstra search is
     * conducted instead. The standard bidirectional Dijkstra search is only used for testing, as it much slower than the modified bidirectional search.
     */
-    std::pair<std::vector<uint64_t>, double> get_shortest_path(uint64_t source, uint64_t target, bool standard = false);
+    std::pair<std::vector<uint64_t>, double> getShortestPath(uint64_t source, uint64_t target, bool standard = false);
 
     /**
     * Used to remove unnecessary edges after the graph is contracted. Edges that start at a Vertex of greater order than the Vertex the Edge ends at can
     * be removed from the graph because these edges will never appear on the shortest path.
     */
-    void optimize_edges();
+    void optimizeEdges();
 
     // Used for saving the graph to a binary file.
     template <class Archive>
