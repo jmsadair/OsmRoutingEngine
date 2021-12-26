@@ -4,11 +4,11 @@ project(ContractionHierarchies)
 
 set(SKIP_PERFORMANCE_COMPARISON ON CACHE BOOL "" FORCE)
 set(SOURCE_FILES
-        Graph.cpp
-		BidirectionalSearch.cpp
-		HierarchyConstructor.cpp
-		OsmParser.cpp
-		Weighting.cpp
+		src/Graph.cpp
+        src/BidirectionalSearch.cpp
+		src/HierarchyConstructor.cpp
+		src/OsmParser.cpp
+		src/Weighting.cpp
         lib/pugixml/src/pugixml.cpp)
 
 add_subdirectory(lib/cereal EXCLUDE_FROM_ALL lib/cereal/sandbox)

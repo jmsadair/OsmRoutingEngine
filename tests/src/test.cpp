@@ -392,7 +392,7 @@ TEST_CASE( "Comprehensive contraction hierarchies test", "[BidirectionalSearch]"
     std::mt19937 engine(rd());
 
     for (auto& parser : parsers) {
-        Graph contracted_graph = parser.get_routing_data().first;
+        Graph contracted_graph = parser.constructRoadNetworkGraph().first;
         Graph graph = contracted_graph;
         auto vertices = graph.getVertices();
         HierarchyConstructor builder(contracted_graph);

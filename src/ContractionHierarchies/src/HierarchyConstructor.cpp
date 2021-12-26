@@ -9,13 +9,10 @@ void HierarchyConstructor::contractGraph() {
     // The order in which the vertices are contracted must be recorded for route finding later on.
     uint64_t ordering_count = 0;
 
-    std::cout << "Contracting graph..." << std::endl;
-
     while (!queue.empty()) {
         const auto contracted_vertex = getNext(&queue);
         graph_.addOrdering(contracted_vertex, ordering_count);
         ordering_count++;
-        if (ordering_count % 1000 == 0) { std::cout << "Contracted " << ordering_count << " vertices." << std::endl; }
         contractVertex(contracted_vertex);
 
         // We update the deleted neighbors counter of all vertices adjacent to the Vertex being contracted.
@@ -40,13 +37,8 @@ void HierarchyConstructor::contractGraph() {
         vertices_.erase(contracted_vertex);
     }
 
-    std::cout << "Added " << total_edges_added_ << " edges." << std::endl;
-    std::cout << "Graph contraction phase complete." << std::endl;
-    std::cout << "Optimizing edges..." << std::endl;
-
     // Optimizing the graph removes any edges that go from a Vertex of higher order to a Vertex of lower order, as these will never be on the shortest path.
     graph_.optimizeEdges();
-    std::cout << "Edge optimization phase complete." << std::endl;
 }
 
 int HierarchyConstructor::contractVertex(uint64_t contracted_vertex, bool simulated) {
@@ -113,7 +105,6 @@ HierarchyConstructor::witnessSearch(uint64_t source, uint64_t contracted_vertex,
 }
 
 Queue<HeapElement> HierarchyConstructor::getInitialOrdering() {
-    std::cout << "Getting initial node ordering..." << std::endl;
     Queue<HeapElement> queue(int(vertices_.size()));
 
     // We simulate the contraction of all vertices in the graph to get a good node ordering.
@@ -121,7 +112,6 @@ Queue<HeapElement> HierarchyConstructor::getInitialOrdering() {
         queue.push(HeapElement(x.first, getPriorityTerm(x.first, true)));
     }
 
-    std::cout << "Node ordering phase complete." << std::endl;
     return queue;
 }
 

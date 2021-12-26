@@ -36,7 +36,7 @@ Parser::Parser(const char* osm_filename)
     if (!doc.load_file(osm_filename)) { throw std::runtime_error("Could not open OSM file."); }
 }
 
-std::unordered_map<uint64_t , array1> Parser::get_locations() const {
+std::unordered_map<uint64_t , array1> Parser::getLocations() const {
     std::unordered_map<uint64_t, array1> locations;
     array1 coords;
     const auto xpath_nodes = doc.select_nodes("/osm/node");
@@ -52,7 +52,7 @@ std::unordered_map<uint64_t , array1> Parser::get_locations() const {
     return locations;
 }
 
-std::vector<Way> Parser::get_ways() const {
+std::vector<Way> Parser::getAllWays() const {
     std::vector<Way> ways;
     const pugi::xpath_node_set xpath_ways = doc.select_nodes("/osm/way");
     ways.reserve(xpath_ways.size());
@@ -77,19 +77,17 @@ std::vector<Way> Parser::get_ways() const {
     return ways;
 }
 
-std::pair<Graph, std::unordered_map<uint64_t, std::array<double, 2>>> Parser::get_routing_data() const {
-    Graph graph;
-    std::vector<uint64_t> edge_nodes;
+std::tuple<std::vector<Way>, std::unordered_map<uint64_t, std::array<double, 2>>, std::unordered_map<uint64_t, int>> Parser::getRoutingData() const {
     std::vector<Way> ways;
     std::unordered_map<uint64_t, int> node_links;
-    auto locations = get_locations();
+    auto locations = getLocations();
     auto xpath_ways = doc.select_nodes("/osm/way");
     node_links.reserve(locations.size());
     ways.reserve(xpath_ways.size());
 
     /**
     * Loops through all of the ways in the data. Records their node references and any important tags.
-    * This is essentially identical to the get_ways method. However, in this case, we throw out any ways
+    * This is essentially identical to the getAllWays method. However, in this case, we throw out any ways
     * that are not useful for routing and only record accepted tags.
     */
     for (const auto& xpath_way : xpath_ways) {
@@ -124,12 +122,23 @@ std::pair<Graph, std::unordered_map<uint64_t, std::array<double, 2>>> Parser::ge
         if (way_tags.find("highway") != way_tags.end()) { ways.emplace_back(way_node_refs, way_tags); }
     }
 
+    return std::make_tuple(ways, locations, node_links);
+}
+
+std::pair<Graph, std::unordered_map<uint64_t, std::array<double, 2>>> Parser::constructRoadNetworkGraph() const {
+    Graph graph;
+    auto routing_data = getRoutingData();
+    std::vector<Way>* ways = &std::get<0>(routing_data);
+    std::unordered_map<uint64_t, std::array<double, 2>>* locations = &std::get<1>(routing_data);
+    std::unordered_map<uint64_t, int>* node_links = &std::get<2>(routing_data);
+    std::vector<uint64_t> edge_nodes;
+
     /**
     * We now split the ways into edges that will be used in a weighted, directed graph. A split is made if a node is present in more than one
     * way (i.e. an intersection).
     */
     int counter = 0;
-    for (const auto& way : ways) {
+    for (auto & way : *ways) {
         int right_idx = 1;
         int left_idx = 0;
         double weight = 0.0;
@@ -141,10 +150,10 @@ std::pair<Graph, std::unordered_map<uint64_t, std::array<double, 2>>> Parser::ge
             }
 
             // Travel time serves as the edge weight in the road hierarchy graph.
-            weight += Weighting::time(locations[way.node_refs[right_idx - 1]][0], locations[way.node_refs[right_idx - 1]][1],
-                                      locations[way.node_refs[right_idx]][0], locations[way.node_refs[right_idx]][1], speed_mph);
+            weight += Weighting::time(locations->at(way.node_refs[right_idx - 1])[0], locations->at(way.node_refs[right_idx - 1])[1],
+                                      locations->at(way.node_refs[right_idx])[0], locations->at(way.node_refs[right_idx])[1], speed_mph);
 
-            if (node_links[way.node_refs[right_idx]] > 1 || right_idx == way.node_refs.size() - 1) {
+            if (node_links->at(way.node_refs[right_idx]) > 1 || right_idx == way.node_refs.size() - 1) {
                 uint64_t start = way.node_refs[left_idx];
                 uint64_t end = way.node_refs[right_idx];
                 edge_nodes = std::vector<uint64_t>(way.node_refs.begin() + left_idx - 1, way.node_refs.begin() + right_idx );
@@ -161,5 +170,6 @@ std::pair<Graph, std::unordered_map<uint64_t, std::array<double, 2>>> Parser::ge
             right_idx++;
         }
     }
-    return std::make_pair(graph, locations);
+
+    return std::make_pair(graph, *locations);
 }

@@ -12,7 +12,7 @@ int main() {
     Parser osm("example_map_data.osm");
 
     // Returns a pair containing a graph object and unordered map containing node IDs as keys and coordinates as values
-    auto example_routing_data = osm.get_routing_data();
+    auto example_routing_data = osm.constructRoadNetworkGraph();
 
     // Takes a graph object as an argument.
     HierarchyConstructor builder(example_routing_data.first);

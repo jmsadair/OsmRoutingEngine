@@ -49,20 +49,26 @@ public:
     /**
     * This function will retrieve the IDs and coordinates of all the nodes in the OSM file.
     */
-    std::unordered_map<uint64_t, std::array<double, 2>> get_locations()const;
+    std::unordered_map<uint64_t, std::array<double, 2>> getLocations() const;
 
     /**
-    * This function will retrieve the the node references and tags from all the ways in the
+    * This function will retrieve the node references and tags from all the ways in the
     * OSM file.
     */
-    std::vector<Way> get_ways()const;
+    std::vector<Way> getAllWays() const;
 
     /**
-    * This function will construct a weighted, undirected graph from the data in the OSM file.
+     * This function will only retrieve the ways and locations that will be used in the road network graph.
+     * Returns a pair that contains the ways and locations.
+     */
+    std::tuple<std::vector<Way>, std::unordered_map<uint64_t, std::array<double, 2>>, std::unordered_map<uint64_t, int>> getRoutingData() const;
+
+    /**
+    * This function will construct a weighted, directed graph from the data in the OSM file.
     * Nodes that are present in more than one way are intersections and will be used as vertices
     * in the graph. Edges are made up of all of the node IDs that connect two intersection. Each
     * Edge is assigned a time weight (in minutes). The graph, as well as an unordered map of the
     * locations is returned.
     */
-    std::pair<Graph, std::unordered_map<uint64_t, std::array<double, 2>>> get_routing_data()const;
+    std::pair<Graph, std::unordered_map<uint64_t, std::array<double, 2>>> constructRoadNetworkGraph() const;
 };
