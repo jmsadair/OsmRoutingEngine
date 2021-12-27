@@ -13,4 +13,5 @@ include_directories(${ENGINE_HEADERS_DIR})
 
 add_subdirectory(src)
 add_subdirectory(tests)
+add_subdirectory(benchmark)
 

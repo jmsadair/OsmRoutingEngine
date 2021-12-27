@@ -8,3 +8,6 @@
 	path = tests/lib/Catch2
 	url = https://github.com/catchorg/Catch2.git
 	branch = v2.x
+[submodule "benchmark/lib/nanobench"]
+	path = benchmark/lib/nanobench
+	url = https://github.com/martinus/nanobench.git
