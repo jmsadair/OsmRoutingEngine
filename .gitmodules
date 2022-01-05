@@ -14,3 +14,6 @@
 [submodule "bindings/lib/pybind11"]
 	path = bindings/lib/pybind11
 	url = https://github.com/pybind/pybind11.git
+[submodule "RoutingEngine/ContractionHierarchies/lib/cereal"]
+	path = RoutingEngine/ContractionHierarchies/lib/cereal
+	url = https://github.com/USCiLab/cereal.git
