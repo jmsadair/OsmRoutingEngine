@@ -1,0 +1,7 @@
+# Ignore cmake-build-release and cmake-build-debug folder
+cmake-build-release
+cmake-build-debug
+# Ignore .idea folder
+.idea
+# Ignore .vs folder
+.vs

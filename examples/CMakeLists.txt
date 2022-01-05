@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.2)
+project(Examples)
+set(SOURCE_FILES BasicUsage.cpp)
+add_executable(Examples ${SOURCE_FILES})
+target_link_libraries(Examples PRIVATE RoutingEngine)
+target_include_directories(Examples PRIVATE ${ENGINE_HEADERS_DIR})
+install(TARGETS Examples DESTINATION ${ENGINE_INSTALL_BIN_DIR})

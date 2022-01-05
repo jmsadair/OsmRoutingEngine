@@ -1,6 +1,19 @@
-[submodule "dependencies/cereal"]
-	path = dependencies/cereal
+[submodule "src/ContractionHierarchies/lib/cereal"]
+	path = src/ContractionHierarchies/lib/cereal
 	url = https://github.com/USCiLab/cereal.git
-[submodule "dependencies/pugixml"]
-	path = dependencies/pugixml
+[submodule "tests/lib/Catch2"]
+	path = tests/lib/Catch2
+	url = https://github.com/catchorg/Catch2.git
+	branch = v2.x
+[submodule "benchmark/lib/nanobench"]
+	path = benchmark/lib/nanobench
+	url = https://github.com/martinus/nanobench.git
+[submodule "RoutingEngine/Parsing/lib/pugixml"]
+	path = RoutingEngine/Parsing/lib/pugixml
 	url = https://github.com/zeux/pugixml.git
+[submodule "bindings/lib/pybind11"]
+	path = bindings/lib/pybind11
+	url = https://github.com/pybind/pybind11.git
+[submodule "RoutingEngine/ContractionHierarchies/lib/cereal"]
+	path = RoutingEngine/ContractionHierarchies/lib/cereal
+	url = https://github.com/USCiLab/cereal.git
