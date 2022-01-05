@@ -7,10 +7,9 @@
 #include <stdexcept>
 #include <random>
 #include <iostream>
-#include <fstream>
 
-TEST_CASE( "Queue pop/push test", "[Queue]") {
-    Queue<int> Q1;
+TEST_CASE( "Queue::MinHeap pop and push test", "[MinHeap]") {
+    Queue::MinHeap<int> Q1;
     Q1.push(1);
     Q1.push(2);
     Q1.push(3);
@@ -18,7 +17,7 @@ TEST_CASE( "Queue pop/push test", "[Queue]") {
     REQUIRE( Q1.pop() == 2 );
     REQUIRE( Q1.pop() == 3 );
 
-    Queue<float> Q2;
+    Queue::MinHeap<float> Q2;
     Q2.push(1.001);
     Q2.push(2.647);
     Q2.push(17.3454);
@@ -30,7 +29,7 @@ TEST_CASE( "Queue pop/push test", "[Queue]") {
     REQUIRE( Q2.pop() == 4.54553f );
     REQUIRE( Q2.pop() == 17.3454f );
 
-    Queue<HeapElement> Q3;
+    Queue::MinHeap<HeapElement> Q3;
     Q3.push(HeapElement(1, 1, 1));
     Q3.push(HeapElement(2, 18, 1));
     Q3.push(HeapElement(3, 0.5, 0));
@@ -38,7 +37,7 @@ TEST_CASE( "Queue pop/push test", "[Queue]") {
     REQUIRE( Q3.pop().value == 1 );
     REQUIRE( Q3.pop().value == 18 );
 
-    Queue<int> Q4;
+    Queue::MinHeap<int> Q4;
     int num = 0;
     REQUIRE_THROWS_AS( Q4.pop(), std::logic_error );
     REQUIRE_THROWS_AS( Q4.lazyUpdate(1), std::logic_error );
@@ -51,8 +50,8 @@ TEST_CASE( "Queue pop/push test", "[Queue]") {
     }
 }
 
-TEST_CASE( "Queue empty test", "[Queue]") {
-    Queue<int> Q1;
+TEST_CASE( "Queue::MinHeap empty test", "[MinHeap]") {
+    Queue::MinHeap<int> Q1;
     REQUIRE( Q1.empty() == true );
     Q1.push(1);
     Q1.push(2);
@@ -63,8 +62,8 @@ TEST_CASE( "Queue empty test", "[Queue]") {
     REQUIRE( Q1.empty() == true );
 }
 
-TEST_CASE( "Queue size test", "[Queue]") {
-    Queue<int> Q1;
+TEST_CASE( "Queue::MinHeap size test", "[MinHeap]") {
+    Queue::MinHeap<int> Q1;
     Q1.push(1);
     REQUIRE( Q1.size() == 1 );
     Q1.push(2);
@@ -77,8 +76,8 @@ TEST_CASE( "Queue size test", "[Queue]") {
     REQUIRE( Q1.size() == 1 );
 }
 
-TEST_CASE( "Queue peek test", "[Queue]") {
-    Queue<int> Q1;
+TEST_CASE( "Queue::MinHeap peek test", "[MinHeap]") {
+    Queue::MinHeap<int> Q1;
     Q1.push(1);
     Q1.push(2);
     Q1.push(3);
@@ -91,9 +90,9 @@ TEST_CASE( "Queue peek test", "[Queue]") {
     REQUIRE_THROWS_AS(Q1.peek(), std::logic_error);
 }
 
-TEST_CASE( "Queue makeHeap test", "[Queue]") {
+TEST_CASE( "Queue::MinHeap makeHeap test", "[MinHeap]") {
     std::vector<int> nums{1, 4, 3, 5, 12, 2, 14, 25, 34 , 8, 900, 123, 27, 78, 14};
-    Queue<int> Q1;
+    Queue::MinHeap<int> Q1;
     Q1.makeHeap(nums);
     std::sort(nums.begin(), nums.end(), std::greater<int>());
     while (!Q1.empty()) {
@@ -102,9 +101,9 @@ TEST_CASE( "Queue makeHeap test", "[Queue]") {
     }
 }
 
-TEST_CASE( "Large Queue with floats test", "[Queue]") {
+TEST_CASE( "Large Queue::MinHeap with floats test", "[MinHeap]") {
     std::vector<float> nums;
-    Queue<float> Q1;
+    Queue::MinHeap<float> Q1;
 
     // Read the test input file.
     std::fstream file;
@@ -293,7 +292,7 @@ TEST_CASE( "Simple contraction hierarchies test", "[BidirectionalSearch]") {
     builder1.contractGraph();
     std::vector<uint64_t> expectedPath{1, 3};
     double expectedWeight = 1;
-    auto result = graph1.getShortestPath(1, 3);
+    auto result = graph1.getShortestPath(1, 3, true);
     REQUIRE( result.first == expectedPath );
     REQUIRE( result.second == expectedWeight );
 
@@ -392,7 +391,7 @@ TEST_CASE( "Comprehensive contraction hierarchies test", "[BidirectionalSearch]"
     std::mt19937 engine(rd());
 
     for (auto& parser : parsers) {
-        Graph contracted_graph = parser.constructRoadNetworkGraph().first;
+        Graph contracted_graph = parser.constructRoadNetworkGraph();
         Graph graph = contracted_graph;
         auto vertices = graph.getVertices();
         HierarchyConstructor builder(contracted_graph);

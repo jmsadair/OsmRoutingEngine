@@ -1,6 +1,7 @@
 #pragma once
 #include <fstream>
 #include "cereal/archives/binary.hpp"
+
 /**
 * The purpose of this class is to provide a way of saving a graph for future use, as parsing and preprocessing
 * a very large OSM file can be quite time consuming. We use the Cereal library to Serialize the graph. More information
@@ -10,7 +11,12 @@ class Serialize {
 
 public:
 	
-	// Saves the graph as binary file.
+	/**
+	 * Serializes an object and saves it the the provided filename.
+	 * @tparam T The type of the object to be serialized. See cereal documentation.
+	 * @param filename The name of the file that the serialized object should be saved to.
+	 * @param object The object to be serialized.
+	 */
     template <class T>
     static void save(const char* filename, T object) {
         std::ofstream os(filename, std::ios::binary);
@@ -18,6 +24,12 @@ public:
         archive(object);
     }
 
+    /**
+     * Loads a serialized object from the given filename.
+     * @tparam T The type of the object to be loaded. See cereal documentation.
+     * @param filename The filename of the file to be loaded.
+     * @return The object that is loaded from the given filename.
+     */
     template <class T>
     static T load(const char* filename) {
         T object;

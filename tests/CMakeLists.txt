@@ -1,12 +1,10 @@
-cmake_minimum_required(VERSION 3.2)
+cmake_minimum_required(VERSION 3.8)
 project(ContractionHierarchiesTests)
-
 add_subdirectory(lib/Catch2)
-include_directories(${ENGINE_HEADERS_DIR})
-include_directories(lib/Catch2/single_include/catch2)
-
 set(SOURCE_FILES src/test.cpp)
-
+include_directories(lib/Catch2/single_include/catch2)
+include_directories(${CH_HEADERS_DIR})
+include_directories(${PARSING_HEADERS_DIR})
 add_executable(ContractionHierarchiesTests ${SOURCE_FILES})
-target_link_libraries(ContractionHierarchiesTests ContractionHierarchies Catch2)
+target_link_libraries(ContractionHierarchiesTests ContractionHierarchies Catch2 Parsing)
 install(TARGETS ContractionHierarchiesTests DESTINATION ${ENGINE_INSTALL_BIN_DIR})

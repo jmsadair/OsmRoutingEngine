@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.15)
+project(OSM)
+add_subdirectory(lib/pybind11)
+pybind11_add_module(OSM src/bindings.cpp)
+target_link_libraries(OSM PRIVATE RoutingEngine)
+install(TARGETS OSM DESTINATION ${ENGINE_INSTALL_LIB_DIR})

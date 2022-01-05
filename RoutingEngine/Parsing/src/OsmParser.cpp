@@ -2,52 +2,24 @@
 #include "OsmParser.h"
 #include <utility>
 
-using array1 = std::array<double, 2>;
-
 Way::Way(std::vector<uint64_t> way_node_refs, std::unordered_map<std::string, std::string> way_tags)
         : node_refs(std::move(way_node_refs)), tags(std::move(way_tags))
 {}
 
-Parser::Parser(const char* osm_filename)
-        : ACCEPTED_TAGS({ "highway", "oneway"}),
-          DEFAULT_SPEED_MPH({
-                                    {"motorway" , 60},
-                                    {"trunk" , 45},
-                                    {"primary" , 35},
-                                    {"secondary" , 30},
-                                    {"residential" , 25},
-                                    {"tertiary" , 25},
-                                    {"unclassified" , 25},
-                                    {"living_street" , 10},
-                                    {"motorway_link" , 30},
-                                    {"trunk_link" , 30},
-                                    {"primary_link" , 30},
-                                    {"secondary_link" , 30},
-                                    {"tertiary_link" , 25},
-                                    {"service" , 10},
-                                    {"road" , 35},
-                                    {"pedestrian" , 10},
-                                    {"track", 15},
-                                    {"bus_guideway", 40},
-                                    {"escape", 10},
-                                    {"busway", 35},
-                            })
-{
+Parser::Parser(const char* osm_filename) {
     if (!doc.load_file(osm_filename)) { throw std::runtime_error("Could not open OSM file."); }
 }
 
-std::unordered_map<uint64_t , array1> Parser::getLocations() const {
-    std::unordered_map<uint64_t, array1> locations;
-    array1 coords;
+std::unordered_map<uint64_t , std::array<double, 2>> Parser::getLocations() const {
+    std::unordered_map<uint64_t, std::array<double, 2>> locations;
     const auto xpath_nodes = doc.select_nodes("/osm/node");
     locations.reserve(xpath_nodes.size());
 
     // Loops through all the nodes in the data. Records their ID and coordinates.
     for (pugi::xpath_node xpath_node : xpath_nodes) {
         auto node = xpath_node.node();
-        coords[0] = node.attribute("lat").as_double();
-        coords[1] = node.attribute("lon").as_double();
-        locations[node.attribute("id").as_ullong()] = coords;
+        locations[node.attribute("id").as_ullong()][0] = node.attribute("lat").as_double();
+        locations[node.attribute("id").as_ullong()][1] = node.attribute("lon").as_double();
     }
     return locations;
 }
@@ -125,11 +97,11 @@ std::tuple<std::vector<Way>, std::unordered_map<uint64_t, std::array<double, 2>>
     return std::make_tuple(ways, locations, node_links);
 }
 
-std::pair<Graph, std::unordered_map<uint64_t, std::array<double, 2>>> Parser::constructRoadNetworkGraph() const {
-    Graph graph;
+Graph Parser::constructRoadNetworkGraph(bool time, const std::string& time_units, const std::string& distance_units) const {
     auto routing_data = getRoutingData();
     std::vector<Way>* ways = &std::get<0>(routing_data);
     std::unordered_map<uint64_t, std::array<double, 2>>* locations = &std::get<1>(routing_data);
+    Graph graph(*locations);
     std::unordered_map<uint64_t, int>* node_links = &std::get<2>(routing_data);
     std::vector<uint64_t> edge_nodes;
 
@@ -141,35 +113,49 @@ std::pair<Graph, std::unordered_map<uint64_t, std::array<double, 2>>> Parser::co
     for (auto & way : *ways) {
         int right_idx = 1;
         int left_idx = 0;
-        double weight = 0.0;
+        double time_weight = 0.0;
+        double distance_weight = 0.0;
         counter++;
+
         while (right_idx < way.node_refs.size()) {
             int speed_mph = 35;
             if (DEFAULT_SPEED_MPH.find(way.tags.at("highway")) != DEFAULT_SPEED_MPH.end()) {
                 speed_mph = DEFAULT_SPEED_MPH.at(way.tags.at("highway"));
             }
-
-            // Travel time serves as the edge weight in the road hierarchy graph.
-            weight += Weighting::time(locations->at(way.node_refs[right_idx - 1])[0], locations->at(way.node_refs[right_idx - 1])[1],
-                                      locations->at(way.node_refs[right_idx])[0], locations->at(way.node_refs[right_idx])[1], speed_mph);
+            // Travel time between intersections in time_units.
+            time_weight += Weighting::time(locations->at(way.node_refs[right_idx - 1])[0],
+                                           locations->at(way.node_refs[right_idx - 1])[1],
+                                            locations->at(way.node_refs[right_idx])[0],
+                                            locations->at(way.node_refs[right_idx])[1],
+                                            speed_mph, time_units);
+            // Distance between intersections in distance_units.
+            distance_weight += Weighting::haversineDist(locations->at(way.node_refs[right_idx - 1])[0],
+                                                        locations->at(way.node_refs[right_idx - 1])[1],
+                                                        locations->at(way.node_refs[right_idx])[0],
+                                                        locations->at(way.node_refs[right_idx])[1],
+                                                        distance_units);
 
             if (node_links->at(way.node_refs[right_idx]) > 1 || right_idx == way.node_refs.size() - 1) {
+                // The start and end node IDs of an edge.
                 uint64_t start = way.node_refs[left_idx];
                 uint64_t end = way.node_refs[right_idx];
-                edge_nodes = std::vector<uint64_t>(way.node_refs.begin() + left_idx - 1, way.node_refs.begin() + right_idx );
+
+                // The node IDs that make up the edge.
+                edge_nodes = std::vector<uint64_t>(way.node_refs.begin() + left_idx + 1, way.node_refs.begin() + right_idx );
+
                 // Checking if Edge is bidirectional.
                 if (way.tags.find("oneway") == way.tags.end() || way.tags.at("oneway") == "no") {
-                    graph.addEdge(start, end, &edge_nodes, weight, true);
+                    graph.addEdge(start, end, &edge_nodes, time_weight, distance_weight, true, time);
                 }
                 else {
-                    graph.addEdge(start, end, &edge_nodes, weight);
+                    graph.addEdge(start, end, &edge_nodes, time_weight, distance_weight, false, time);
                 }
                 left_idx = right_idx;
-                weight = 0.0;
+                time_weight = 0.0;
+                distance_weight = 0.0;
             }
             right_idx++;
         }
     }
-
-    return std::make_pair(graph, *locations);
+    return graph;
 }
